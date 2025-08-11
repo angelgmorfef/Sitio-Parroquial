@@ -1,0 +1,171 @@
+/* Estilos generales */
+body {
+    font-family: sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    width: 100%;
+}
+
+.contenedor {
+    margin: 20px;
+    background-color: #fff;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* Encabezado */
+.header {
+    background-color: #ffffff;
+    color: #555353;
+    padding: 20px;
+    text-align: center;
+    padding: 0%;
+}
+
+.header h1 {
+    margin: 0;
+}
+
+.header nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+header .nav {
+    background-color: rgb(174, 25, 25);
+}
+
+.header nav li {
+    display: inline;
+    margin: 0 10px;
+}
+
+.header nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Contenido y barra lateral (float) */
+.contenido-principal {
+    width: 80%;
+    float: left; /* Flota a la izquierda */
+    box-sizing: border-box; /* Para que el padding no afecte el ancho total */
+}
+
+.barra-lateral {
+    width: 30%;
+    float: right; /* Flota a la derecha */
+    background-color: #e2e2e2;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Pie de página */
+.footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    clear: both; /* Limpia los floats para que el footer no suba */
+}
+
+.carrusel {
+    background-color: rgb(197, 196, 196);
+    width: 65%; /* Ocupa el 65% del ancho del contenedor */
+    float: left; /* Flota a la izquierda */
+    box-sizing: border-box;
+}
+
+.carrusel img {
+    max-width: 100%; /* La imagen se ajustará al ancho del carrusel */
+    height: 100%;
+    display: block; /* Para evitar espacios no deseados */
+    margin-bottom: 50px;
+}
+
+.contenido-adicional {
+    width: 35%; /* Ocupa el 35% del ancho del contenedor */
+    float: right; /* Flota a la derecha */
+    background-color: #e2e2e2;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.contenido-adicional ul {
+    list-style: none;
+    padding: 0;
+}
+
+.contenido-adicional li {
+    margin-bottom: 10px;
+}
+
+/* Pie de página */
+.footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    clear: both; /* Limpia los floats */
+}
+
+/* Clase para limpiar floats si es necesario */
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.noticias-calendario {
+  display: flex; /* Hacemos que el contenedor sea flexible */
+  gap: 20px; /* Separación entre las columnas */
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+/* Estilos de las columnas */
+.columna-noticias,
+.columna-calendario {
+  flex: 1; /* Esto hace que cada columna ocupe el mismo espacio */
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Estilos para el contenido */
+.columna-noticias h3,
+.columna-calendario h3 {
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+article {
+  margin-bottom: 20px;
+}
+
+.columna-noticias a {
+  display: inline-block;
+  margin-top: 5px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.columna-noticias a:hover {
+  text-decoration: underline;
+}
+
+.columna-calendario ul {
+  list-style: none;
+  padding: 0;
+}
+
+.columna-calendario li {
+  margin-bottom: 15px;
+  border-left: 3px solid #007bff;
+  padding-left: 10px;
+}
