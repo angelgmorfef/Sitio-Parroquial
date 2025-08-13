@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendario - Parroquia Jesús Obrero</title>
+    <link rel="stylesheet" href="asset/Css/calendario.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <h1 class="logo">PARROQUIA JESUS OBRERO</h1>
+        </div>
+    </header>
+    
+    <div class="nav-container">
+        <nav class="nav">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="#">Servicios</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+    </div>
+    
+    <main class="main-content"> <div class="calendar-container">
+            <div class="calendar-header" role="navigation" aria-label="Navegación del calendario">
+                <button id="prevBtn" aria-label="Mes anterior">&lt;</button>
+                <h2 id="monthYear"></h2>
+                <button id="nextBtn" aria-label="Mes siguiente">&gt;</button>
+            </div>
+            <table class="calendar-table">
+                <thead>
+                    <tr>
+                        <th>Dom</th>
+                        <th>Lun</th>
+                        <th>Mar</th>
+                        <th>Mié</th>
+                        <th>Jue</th>
+                        <th>Vie</th>
+                        <th>Sáb</th>
+                    </tr>
+                </thead>
+                <tbody id="calendar-body">
+                    </tbody>
+            </table>
+        </div>
+    </main>
+    
+    <footer class="footer">
+        <p>&copy; 2025 Parroquia Jesús Obrero. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="asset/Js/calendario.js"></script>
+</body>
+</html>

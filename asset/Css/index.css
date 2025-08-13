@@ -5,167 +5,128 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
-    width: 100%;
 }
 
-.contenedor {
-    margin: 20px;
+main {
+    max-width: 1200px;
+    margin: 20px auto;
     background-color: #fff;
-    overflow: hidden;
     box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    padding: 20px;
 }
 
 /* Encabezado */
 .header {
     background-color: #ffffff;
-    color: #555353;
-    padding: 20px;
-    text-align: center;
-    padding: 0%;
+    padding: 20px 0;
 }
 
-.header h1 {
+.header-container {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
     margin: 0;
+    color: #555353;
 }
 
-.header nav ul {
+.nav-container {
+    background-color: #aa0000; /* Un fondo gris oscuro elegante */
+    padding: 15px 0; /* Espaciado superior e inferior para altura */
+    width: 100%;
+}
+
+/* Lista de navegación */
+.nav ul {
+    list-style: none; /* Elimina los puntos de la lista */
     margin: 0;
     padding: 0;
-    list-style: none;
+    display: flex; /* Utiliza Flexbox para alinear los elementos */
+    justify-content: center; /* Centra los enlaces horizontalmente */
+    align-items: center; /* Centra los enlaces verticalmente */
 }
 
-header .nav {
-    background-color: rgb(174, 25, 25);
+/* Elementos de la lista */
+.nav li {
+    margin: 0 15px; /* Espacio entre cada elemento del menú */
 }
 
-.header nav li {
-    display: inline;
-    margin: 0 10px;
+/* Estilo de los enlaces */
+.nav a {
+    color: #ecf0f1; /* Color del texto claro */
+    text-decoration: none; /* Elimina el subrayado por defecto */
+    font-size: 1.1rem; /* Aumenta el tamaño de la fuente para mejor lectura */
+    font-weight: bold;
+    transition: color 0.3s ease; /* Transición suave para el efecto hover */
 }
 
-.header nav a {
-    color: #fff;
-    text-decoration: none;
+/* Efecto al pasar el cursor */
+.nav a:hover {
+    color: #3498db; /* Cambia el color del texto a un azul brillante */
 }
 
-/* Contenido y barra lateral (float) */
-.contenido-principal {
-    width: 80%;
-    float: left; /* Flota a la izquierda */
-    box-sizing: border-box; /* Para que el padding no afecte el ancho total */
-}
-
-.barra-lateral {
-    width: 30%;
-    float: right; /* Flota a la derecha */
-    background-color: #e2e2e2;
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-/* Pie de página */
-.footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 20px;
-    clear: both; /* Limpia los floats para que el footer no suba */
-}
-
+/* Carrusel */
 .carrusel {
     background-color: rgb(197, 196, 196);
-    width: 65%; /* Ocupa el 65% del ancho del contenedor */
-    float: left; /* Flota a la izquierda */
-    box-sizing: border-box;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.carrusel ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 .carrusel img {
-    max-width: 100%; /* La imagen se ajustará al ancho del carrusel */
-    height: 100%;
-    display: block; /* Para evitar espacios no deseados */
-    margin-bottom: 50px;
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
-.contenido-adicional {
-    width: 35%; /* Ocupa el 35% del ancho del contenedor */
-    float: right; /* Flota a la derecha */
-    background-color: #e2e2e2;
+/* Noticias y Calendario (ya estaban bien) */
+.noticias-calendario {
+    display: flex;
+    gap: 20px;
     padding: 20px;
-    box-sizing: border-box;
+    background-color: #f9f9f9;
 }
 
-.contenido-adicional ul {
-    list-style: none;
-    padding: 0;
-}
-
-.contenido-adicional li {
-    margin-bottom: 10px;
+.columna-noticias,
+.columna-calendario {
+    flex: 1;
+    background-color: #fff;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
 /* Pie de página */
 .footer {
-    background-color: #333;
+    background-color: #aa0000;
     color: #fff;
     text-align: center;
     padding: 20px;
-    clear: both; /* Limpia los floats */
+    margin-top: 20px;
 }
 
-/* Clase para limpiar floats si es necesario */
-.clearfix::after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-.noticias-calendario {
-  display: flex; /* Hacemos que el contenedor sea flexible */
-  gap: 20px; /* Separación entre las columnas */
-  padding: 20px;
-  background-color: #f9f9f9;
-}
-
-/* Estilos de las columnas */
-.columna-noticias,
-.columna-calendario {
-  flex: 1; /* Esto hace que cada columna ocupe el mismo espacio */
-  background-color: #fff;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-/* Estilos para el contenido */
-.columna-noticias h3,
-.columna-calendario h3 {
-  border-bottom: 2px solid #ddd;
-  padding-bottom: 10px;
-  margin-bottom: 15px;
+/* Estilos de elementos */
+h3 {
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 article {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 .columna-noticias a {
-  display: inline-block;
-  margin-top: 5px;
-  color: #007bff;
-  text-decoration: none;
-}
-
-.columna-noticias a:hover {
-  text-decoration: underline;
-}
-
-.columna-calendario ul {
-  list-style: none;
-  padding: 0;
-}
-
-.columna-calendario li {
-  margin-bottom: 15px;
-  border-left: 3px solid #007bff;
-  padding-left: 10px;
+    display: inline-block;
+    margin-top: 5px;
+    color: #007bff;
+    text-decoration: none;
 }
