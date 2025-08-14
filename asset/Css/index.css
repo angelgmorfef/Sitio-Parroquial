@@ -21,12 +21,38 @@ main {
     padding: 20px 0;
 }
 
+/* Estilos para el contenedor del header */
 .header-container {
+    display: flex; /* Activa Flexbox */
+    justify-content: space-between; /* Distribuye los elementos a los extremos */
+    align-items: center; /* Centra los elementos verticalmente */
+    padding: 10px 20px; /* Espacio interno */
+    background-color: #f8f8f8; /* Color de fondo */
+}
+
+/* Estilos para el formulario de búsqueda */
+.search-form {
     display: flex;
-    justify-content: center; 
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
+}
+
+/* Estilos para el campo de búsqueda */
+.search-input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    outline: none;
+}
+
+/* Estilos para el botón de búsqueda */
+.search-button {
+    padding: 8px 12px;
+    margin-left: 5px;
+    border: none;
+    background-color: #aa0000;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 .logo {

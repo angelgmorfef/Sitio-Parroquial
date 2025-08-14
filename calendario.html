@@ -5,14 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calendario - Parroquia Jesús Obrero</title>
     <link rel="stylesheet" href="asset/Css/calendario.css">
+    <script defer src="asset/Js/buscador.js"></script>
 </head>
 <body>
     <header class="header">
         <div class="header-container">
             <h1 class="logo">PARROQUIA JESUS OBRERO</h1>
+            <form class="search-form" action="/search" method="get">
+                <input type="search" placeholder="Buscar..." name="q" class="search-input">
+                <button type="submit" class="search-button">🔍</button>
+            </form>
         </div>
     </header>
-    
     <div class="nav-container">
         <nav class="nav">
             <ul>
@@ -22,7 +26,6 @@
             </ul>
         </nav>
     </div>
-    
     <main class="main-content"> <div class="calendar-container">
             <div class="calendar-header" role="navigation" aria-label="Navegación del calendario">
                 <button id="prevBtn" aria-label="Mes anterior">&lt;</button>
@@ -46,11 +49,9 @@
             </table>
         </div>
     </main>
-    
     <footer class="footer">
         <p>&copy; 2025 Parroquia Jesús Obrero. Todos los derechos reservados.</p>
     </footer>
-
     <script src="asset/Js/calendario.js"></script>
 </body>
 </html>
