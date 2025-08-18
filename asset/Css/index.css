@@ -8,11 +8,13 @@ body {
 }
 
 main {
-    max-width: 1200px;
-    margin: 20px auto;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-    padding: 20px;
+    max-width: 1100px;                /* Slightly reduced for better readability */
+    margin: 32px auto 32px auto;      /* More vertical space */
+    background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+    border-radius: 0px;              /* Rounded corners for a softer look */
+    box-shadow: 0 6px 32px rgba(0,0,0,0.10), 0 1.5px 4px rgba(0,0,0,0.08);
+    padding: 32px 24px;               /* More padding for content breathing room */
+    transition: box-shadow 0.3s, background 0.3s;
 }
 
 /* Encabezado */
@@ -27,7 +29,7 @@ main {
     justify-content: space-between; /* Distribuye los elementos a los extremos */
     align-items: center; /* Centra los elementos verticalmente */
     padding: 10px 20px; /* Espacio interno */
-    background-color: #f8f8f8; /* Color de fondo */
+    background-color: #d70d0d84; /* Color de fondo */
 }
 
 /* Estilos para el formulario de búsqueda */
@@ -95,24 +97,67 @@ main {
     color: #3498db; /* Cambia el color del texto a un azul brillante */
 }
 
-/* Carrusel */
 .carrusel {
-    background-color: rgb(197, 196, 196);
-    padding: 20px;
-    margin-bottom: 20px;
+  position: relative;
+  width: 100%;
+  height: 500px; /* ajusta la altura */
+  overflow: hidden;
+  border-radius: 0px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
 }
 
-.carrusel ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+.slides {
+  display: flex;
+  transition: transform 0.6s ease-in-out;
+  height: 100%;
 }
 
-.carrusel img {
-    max-width: 100%;
-    height: auto;
-    display: block;
+.slide {
+  min-width: 100%;
+  height: 100%;
+  position: relative;
+  flex-shrink: 0;
 }
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slide p {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  padding: 10px 15px;
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+/* Botones */
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.167);
+  color: white;
+  border: none;
+  padding: 12px;
+  cursor: pointer;
+  border-radius: 10%;
+  font-size: 1.5rem;
+  transition: background 0.3s;
+}
+
+.prev:hover, .next:hover {
+  background: rgba(0,0,0,0.8);
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
 
 /* Noticias y Calendario (ya estaban bien) */
 .noticias-calendario {
@@ -157,30 +202,106 @@ article {
     text-decoration: none;
 }
 
+/* Botón volver arriba: animación suave, elevación y anillo sutil */
 #back-to-top-btn {
-    position: fixed; /* Lo fija en la pantalla */
-    bottom: 20px; /* Distancia desde la parte inferior */
-    left: 20px; /* Distancia desde la parte izquierda */
-    font-size: 25px;
-    background-color: #000000; /* Color de fondo */
-    color: white; /* Color de la flecha */
+    position: fixed;
+    right: 20px;
+    bottom: 24px;
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
     border: none;
-    border-radius: 10%; /* Lo hace redondo */
-    width: 50px;
-    height: 50px;
-    opacity: 0; /* Comienza invisible */
+    background-color: #000000;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    line-height: 1;
     cursor: pointer;
-    text-align: center;
-    transition: opacity 5s ease-in-out; /* Animación de transparencia, ajusté la duración */
-    z-index: 1000; /* Asegura que esté por encima de otros elementos */
-    visibility: hidden; /* Oculta el botón por defecto, importante para la transición */
+    z-index: 1000;
+
+    /* Inicio fuera de pantalla y oculto */
+    transform: translateY(16px) scale(.96);
+    opacity: 0;
+    visibility: hidden;
+
+    /* Transiciones para transform y opacidad */
+    transition: transform .36s cubic-bezier(.22,.9,.3,1), 
+                opacity .24s ease-in-out, 
+                box-shadow .18s ease;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+    will-change: transform, opacity;
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
 }
 
+/* Estado visible */
 #back-to-top-btn.show {
-    opacity: 1; /* Opacidad al mostrarse */
-    visibility: visible; /* Hace el botón visible */
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    visibility: visible;
 }
 
+/* Hover / focus styling para interacción */
 #back-to-top-btn:hover {
-    background-color: red; /* Cambia el color de fondo al pasar el mouse */
+    transform: translateY(-6px) scale(1.04);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.28);
+}
+
+/* Click (feedback rápido) */
+#back-to-top-btn:active {
+    transform: translateY(-2px) scale(.98);
+}
+
+/* Accesibilidad: indicador de foco visible */
+#back-to-top-btn:focus {
+    outline: none;
+    box-shadow: 0 12px 36px rgba(0,0,0,0.28), 0 0 0 4px rgba(255,255,255,0.06), 0 0 0 6px rgba(34,34,34,0.06) inset;
+    border-radius: 12px;
+}
+
+/* Anillo sutil (animado) usando pseudo-elemento, solo cuando está visible */
+#back-to-top-btn.show::after {
+    content: "";
+    position: absolute;
+    inset: -6px;
+    border-radius: 16px;
+    pointer-events: none;
+    box-shadow: 0 0 0 rgba(255,255,255,0.12);
+    animation: tt-pulse 2.6s infinite;
+}
+
+/* Keyframes de pulso discreto */
+@keyframes tt-pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(255,255,255,0.12); transform: scale(1); }
+    50%  { box-shadow: 0 0 0 10px rgba(255,255,255,0); transform: scale(1.01); }
+    100% { box-shadow: 0 0 0 0 rgba(255,255,255,0.0); transform: scale(1); }
+}
+
+/* Preferencias de movimiento reducido: desactivar animaciones innecesarias */
+@media (prefers-reduced-motion: reduce) {
+    #back-to-top-btn,
+    #back-to-top-btn.show,
+    #back-to-top-btn:hover,
+    #back-to-top-btn:active {
+        transition: none !important;
+        transform: none !important;
+    }
+    #back-to-top-btn.show::after { animation: none !important; }
+}
+
+/* Resaltado llamativo para la búsqueda */
+.highlight {
+    background: #ffea00;      /* amarillo brillante; cámbialo si prefieres otro color */
+    color: #000;              /* texto en negro para contraste */
+    padding: 0 .12em;
+    border-radius: 3px;
+    transition: background .15s ease;
+}
+
+/* Marca la coincidencia "activa" (la que estamos mostrando/centrando) */
+.highlight.active {
+    outline: 3px solid rgba(255, 170, 0, 0.8);
+    outline-offset: 3px;
 }

@@ -181,3 +181,19 @@ main {
     border-radius: 50%;
 }
 
+/* Resaltado llamativo para la búsqueda */
+.highlight {
+    background: #ffea00;      /* amarillo brillante; cámbialo si prefieres otro color */
+    color: #000;              /* texto en negro para contraste */
+    padding: 0 .12em;
+    border-radius: 3px;
+    transition: background .15s ease;
+}
+
+/* Marca la coincidencia "activa" (la que estamos mostrando/centrando) */
+.highlight.active {
+    outline: 3px solid rgba(255, 170, 0, 0.8);
+    outline-offset: 3px;
+}
+
+

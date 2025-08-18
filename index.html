@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="asset/Css/index.css">
     <script defer src="asset/Js/buscador.js"></script>
     <script defer src="asset/Js/scroll.js"></script>
+    <script defer src="asset/Js/carrusel.js"></script>
 </head>
 <body>
     <header class="header">
@@ -27,22 +28,26 @@
             </ul>
         </nav>
     </div>
-        <button id="back-to-top-btn" title="Volver arriba">&#8593;</button>
+    <button id="back-to-top-btn" title="Volver arriba">&#8593;</button>
     <main>
         <section class="carrusel">
-            <h2>Carrusel de Imágenes</h2>
-            <ul>
-                <li>
-                    <img src="https://via.placeholder.com/600x400" alt="Descripción detallada de la imagen 1.">
-                    <p>Descripción de la imagen 1.</p>
-                </li>
-                <li>
-                    <img src="https://via.placeholder.com/600x400" alt="Descripción detallada de la imagen 2.">
-                    <p>Descripción de la imagen 2.</p>
-                </li>
-            </ul>
+          <div class="slides">
+            <div class="slide active">
+              <img src="https://img.freepik.com/free-photo/aerial-beautiful-shot-seashore-with-hills-background-sunset_181624-24143.jpg?semt=ais_hybrid&w=740&q=80" alt="Descripción detallada de la imagen 1.">
+              <p>Descripción de la imagen 1.</p>
+            </div>
+            <div class="slide">
+              <img src="https://img.freepik.com/free-photo/vestrahorn-mountains-stokksnes-iceland_335224-667.jpg?semt=ais_hybrid&w=740&q=80" alt="Descripción detallada de la imagen 2.">
+              <p>Descripción de la imagen 2.</p>
+            </div>
+            <div class="slide">
+              <img src="https://t4.ftcdn.net/jpg/04/39/89/01/360_F_439890152_sYbPxa1ANTSKcZuUsKzRAf9O7bJ1Tx5B.jpg" alt="Descripción detallada de la imagen 3.">
+              <p>Descripción de la imagen 3.</p>
+            </div>
+          </div>
+          <button class="prev">&#10094;</button>
+          <button class="next">&#10095;</button>
         </section>
-
         <section class="noticias-calendario">
             <div class="columna-noticias">
                 <h3>Últimas Noticias</h3>
