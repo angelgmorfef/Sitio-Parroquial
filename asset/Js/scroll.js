@@ -1,61 +1,54 @@
-// asset/Js/scroll.js
 document.addEventListener('DOMContentLoaded', () => {
-  const backToTopBtn = document.getElementById('back-to-top-btn');
-  if (!backToTopBtn) return; // Si no existe el botón, salimos.
+    const backToTopBtn = document.getElementById('back-to-top-btn');
+    if (!backToTopBtn) return;
 
-  const SHOW_THRESHOLD = 300; // px de scroll para mostrar el botón
-  let ticking = false;
+    const SHOW_THRESHOLD = 300;
+    let ticking = false;
 
-  // Comprueba si se debe mostrar u ocultar el botón
-  function checkScroll() {
-    const y = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-    if (y > SHOW_THRESHOLD) backToTopBtn.classList.add('show');
-    else backToTopBtn.classList.remove('show');
-  }
-
-  // Handler optimizado con requestAnimationFrame
-  function onScroll() {
-    if (!ticking) {
-      window.requestAnimationFrame(() => {
-        checkScroll();
-        ticking = false;
-      });
-      ticking = true;
+    function checkScroll() {
+        const y = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+        if (y > SHOW_THRESHOLD) {
+            backToTopBtn.classList.add('show');
+        } else {
+            backToTopBtn.classList.remove('show');
+        }
     }
-  }
 
-  // Inicializa el estado al cargar
-  checkScroll();
-
-  // Listeners de scroll/resize (passive para mejor performance)
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll, { passive: true });
-
-  // Función para hacer scroll al top respetando prefers-reduced-motion
-  function scrollToTop() {
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduceMotion) {
-      window.scrollTo(0, 0);
-    } else {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    function onScroll() {
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                checkScroll();
+                ticking = false;
+            });
+            ticking = true;
+        }
     }
-  }
 
-  // Click y accesibilidad por teclado
-  backToTopBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    scrollToTop();
-    backToTopBtn.blur(); // quitar foco visual después de clic
-  });
+    checkScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
 
-  backToTopBtn.addEventListener('keydown', (e) => {
-    // Soporte para activar con Enter o Space
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      backToTopBtn.click();
+    function scrollToTop() {
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reduceMotion) {
+            window.scrollTo(0, 0);
+        } else {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
     }
-  });
 
-  // Opcional: si el usuario tabula hasta el botón, aseguramos que esté visible
-  backToTopBtn.addEventListener('focus', () => backToTopBtn.classList.add('show'));
+    backToTopBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        scrollToTop();
+        backToTopBtn.blur();
+    });
+
+    backToTopBtn.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            backToTopBtn.click();
+        }
+    });
+
+    backToTopBtn.addEventListener('focus', () => backToTopBtn.classList.add('show'));
 });

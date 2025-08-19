@@ -1,66 +1,75 @@
-const monthYear = document.getElementById('monthYear');
-const calendarBody = document.getElementById('calendar-body');
-const prevBtn = document.getElementById('prevBtn');
-const nextBtn = document.getElementById('nextBtn');
+document.addEventListener('DOMContentLoaded', () => {
+    const monthYear = document.getElementById('monthYear');
+    const calendarBody = document.getElementById('calendar-body');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
 
-let currentDate = new Date();
-
-function renderCalendar() {
-    const year = currentDate.getFullYear();
-    const month = currentDate.getMonth();
-
-    const firstDayOfMonth = new Date(year, month, 1).getDay();
-    const lastDayOfMonth = new Date(year, month + 1, 0).getDate();
-
-    const monthNames = [
-        "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
-        "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
-    ];
-
-    monthYear.innerText = `${monthNames[month]} ${year}`;
-
-    // Limpia la tabla de forma eficiente y segura
-    while (calendarBody.firstChild) {
-        calendarBody.removeChild(calendarBody.firstChild);
+    if (!monthYear || !calendarBody || !prevBtn || !nextBtn) {
+        console.error("Los elementos del calendario no se encontraron.");
+        return;
     }
 
-    const today = new Date(); // Obtener la fecha de hoy una sola vez
-    const fragment = document.createDocumentFragment(); // Usar fragmento para mejor rendimiento
+    let date = new Date();
 
-    let date = 1;
-    for (let i = 0; i < 6; i++) {
-        const row = document.createElement('tr');
-        for (let j = 0; j < 7; j++) {
+    function renderCalendar() {
+        const year = date.getFullYear();
+        const month = date.getMonth();
+
+        const firstDay = new Date(year, month, 1);
+        const lastDay = new Date(year, month + 1, 0);
+        const daysInMonth = lastDay.getDate();
+
+        const startDay = firstDay.getDay();
+
+        monthYear.textContent = date.toLocaleString('es-ES', { month: 'long', year: 'numeric' });
+        calendarBody.innerHTML = '';
+
+        let row = document.createElement('tr');
+
+        // Crea celdas vacías para los días antes del primer día del mes
+        for (let i = 0; i < startDay; i++) {
             const cell = document.createElement('td');
-            if (i === 0 && j < firstDayOfMonth) {
-                // Celda vacía al inicio del mes
-            } else if (date > lastDayOfMonth) {
-                // Finaliza el mes
-                break;
-            } else {
-                cell.innerText = date;
-
-                // Marca el día actual de forma optimizada
-                if (date === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
-                    cell.classList.add('today');
-                }
-                date++;
-            }
+            cell.classList.add('empty-cell');
             row.appendChild(cell);
         }
-        fragment.appendChild(row);
+
+        // Crea las celdas para cada día del mes
+        for (let i = 1; i <= daysInMonth; i++) {
+            if (row.children.length === 7) {
+                calendarBody.appendChild(row);
+                row = document.createElement('tr');
+            }
+
+            const cell = document.createElement('td');
+            cell.textContent = i;
+
+            // Marca el día de hoy
+            const today = new Date();
+            if (i === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
+                cell.classList.add('today');
+            }
+
+            row.appendChild(cell);
+        }
+
+        // Rellena la última fila con celdas vacías
+        while (row.children.length < 7) {
+            const cell = document.createElement('td');
+            cell.classList.add('empty-cell');
+            row.appendChild(cell);
+        }
+        calendarBody.appendChild(row);
     }
-    calendarBody.appendChild(fragment); // Añade el fragmento al DOM de una sola vez
-}
 
-prevBtn.addEventListener('click', () => {
-    currentDate.setMonth(currentDate.getMonth() - 1);
+    prevBtn.addEventListener('click', () => {
+        date.setMonth(date.getMonth() - 1);
+        renderCalendar();
+    });
+
+    nextBtn.addEventListener('click', () => {
+        date.setMonth(date.getMonth() + 1);
+        renderCalendar();
+    });
+
     renderCalendar();
 });
-
-nextBtn.addEventListener('click', () => {
-    currentDate.setMonth(currentDate.getMonth() + 1);
-    renderCalendar();
-});
-
-renderCalendar();

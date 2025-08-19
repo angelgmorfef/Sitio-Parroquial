@@ -1,22 +1,45 @@
-const slides = document.querySelectorAll(".slide");
-const prevBtn = document.querySelector(".prev");
-const nextBtn = document.querySelector(".next");
-let index = 0;
+document.addEventListener('DOMContentLoaded', () => {
+    const slides = document.querySelector('.slides');
+    const slide = document.querySelectorAll('.slide');
+    const prevBtn = document.querySelector('.prev');
+    const nextBtn = document.querySelector('.next');
 
-function showSlide(i) {
-  if (i < 0) index = slides.length - 1;
-  else if (i >= slides.length) index = 0;
-  else index = i;
+    if (!slides || slide.length === 0 || !prevBtn || !nextBtn) {
+        console.error("El carrusel no se pudo iniciar. Faltan elementos.");
+        return;
+    }
 
-  document.querySelector(".slides").style.transform = `translateX(-${index * 100}%)`;
-}
+    let currentIndex = 0;
 
-// Botones
-prevBtn.addEventListener("click", () => showSlide(index - 1));
-nextBtn.addEventListener("click", () => showSlide(index + 1));
+    function goToSlide(index) {
+        if (index < 0 || index >= slide.length) return; // Evita errores si el índice es incorrecto
+        const offset = -index * 100;
+        slides.style.transform = `translateX(${offset}%)`;
+        currentIndex = index;
+    }
 
-// Auto play
-setInterval(() => {
-  showSlide(index + 1);
-}, 4000);
+    prevBtn.addEventListener('click', () => {
+        let newIndex = currentIndex - 1;
+        if (newIndex < 0) {
+            newIndex = slide.length - 1;
+        }
+        goToSlide(newIndex);
+    });
+
+    nextBtn.addEventListener('click', () => {
+        let newIndex = currentIndex + 1;
+        if (newIndex >= slide.length) {
+            newIndex = 0;
+        }
+        goToSlide(newIndex);
+    });
+
+    setInterval(() => {
+        let newIndex = currentIndex + 1;
+        if (newIndex >= slide.length) {
+            newIndex = 0;
+        }
+        goToSlide(newIndex);
+    }, 3000); // Cambia de diapositiva cada 5 segundos
+});
 
