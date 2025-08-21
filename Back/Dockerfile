@@ -1,4 +1,4 @@
-# Usa la imagen de Node.js que descargaste
+# Usa la imagen de Node.js
 FROM node:22-alpine
 
 # Establece el directorio de trabajo dentro del contenedor
@@ -11,8 +11,8 @@ COPY Front /app/frontend
 # Mueve el directorio de trabajo al backend
 WORKDIR /app/backend
 
-# Instala Express.js
-RUN npm install express
+# Instala las dependencias necesarias del servidor
+RUN npm install express mongodb
 
 # Expone el puerto que usará el servidor
 EXPOSE 3000
