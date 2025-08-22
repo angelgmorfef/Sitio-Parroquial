@@ -12,7 +12,7 @@ COPY Front /app/frontend
 WORKDIR /app/backend
 
 # Instala las dependencias necesarias del servidor
-RUN npm install express mongodb
+RUN npm install express mongodb mongoose
 
 # Expone el puerto que usará el servidor
 EXPOSE 3000

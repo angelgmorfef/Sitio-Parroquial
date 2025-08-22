@@ -1,23 +1,24 @@
-// Importa las librerías necesarias para el servidor web y la base de datos
+// Importa las librerías y el modelo de usuario
 const express = require('express');
 const path = require('path');
-const { MongoClient } = require('mongodb');
+const mongoose = require('mongoose');
+const User = require('./models/User'); // Importa el modelo de usuario
 
 // La cadena de conexión a tu base de datos de MongoDB Atlas
-// ¡Recuerda reemplazar <username> y <password> con tus datos reales!
 const uri = "mongodb+srv://angelmorfefernandes:Hangel0412@cluster0.s0ecbei.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 // Crea la aplicación de Express
 const app = express();
 const PORT = 3000;
 
-// Esta función conecta a la base de datos y luego inicia el servidor
-async function startServer() {
-    const client = new MongoClient(uri);
+// Middleware para que el servidor pueda leer datos en formato JSON
+app.use(express.json()); 
 
+// Función para conectar a la base de datos y luego iniciar el servidor
+async function startServer() {
     try {
-        // Conecta a la base de datos
-        await client.connect();
+        // Conecta a la base de datos de MongoDB Atlas
+        await mongoose.connect(uri);
         console.log("✅ Conectado exitosamente a la base de datos de MongoDB Atlas.");
 
         // Sirve los archivos estáticos desde la carpeta 'frontend'
@@ -28,7 +29,26 @@ async function startServer() {
             res.sendFile(path.join(__dirname, '../frontend', 'index.html'));
         });
 
-        // Inicia el servidor solo después de haberse conectado a la base de datos
+        // ======================================
+        // ======= NUEVA RUTA DE REGISTRO =======
+        // ======================================
+        app.post('/register', async (req, res) => {
+            try {
+                // Obtiene los datos del cuerpo de la petición
+                const { username, password } = req.body;
+
+                // Crea un nuevo usuario
+                const newUser = new User({ username, password });
+                await newUser.save(); // Guarda el usuario en la base de datos
+
+                res.status(201).send('¡Usuario registrado con éxito!');
+
+            } catch (error) {
+                res.status(400).send('Error al registrar el usuario: ' + error.message);
+            }
+        });
+
+        // Inicia el servidor solo después de haberse conectado
         app.listen(PORT, () => {
             console.log(`🚀 Servidor escuchando en http://localhost:${PORT}`);
         });
