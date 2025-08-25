@@ -1,4 +1,5 @@
 // Importa las librerías y el modelo de usuario
+const jwt = require('jsonwebtoken');
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
@@ -48,8 +49,39 @@ async function startServer() {
             }
         });
 
+        // ======================================
+        // ========= NUEVA RUTA DE LOGIN ========
+        // ======================================
+        app.post('/login', async (req, res) => {
+            try {
+                const { email, password } = req.body;
+                const user = await User.findOne({ username: email });
+            
+                if (!user || user.password !== password) {
+                    return res.status(401).send('Correo o contraseña incorrectos.');
+                }
+            
+                // Si el usuario existe y la contraseña es correcta, crea un payload para el token
+                const payload = {
+                    id: user._id,
+                    username: user.username
+                };
+            
+                // Genera el token usando la clave secreta
+                const token = jwt.sign(payload, jwtSecret, { expiresIn: '1h' });
+            
+                // Envía el token al frontend
+                res.status(200).json({ token });
+            
+            } catch (error) {
+                res.status(500).send('Error interno del servidor.');
+                console.error('Error al intentar iniciar sesión:', error);
+            }
+        });
+
         // Inicia el servidor solo después de haberse conectado
         app.listen(PORT, () => {
+            const jwtSecret = 'tu_clave_secreta_super_segura_aqui';
             console.log(`🚀 Servidor escuchando en http://localhost:${PORT}`);
         });
 
