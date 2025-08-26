@@ -29,10 +29,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     localStorage.setItem('authToken', token);
                     alert('¡Inicio de sesión exitoso!');
                     // Opcional: Redirige al usuario a otra página
-                    // window.location.href = '/dashboard.html';
+                    window.location.href = 'dashboard.html';
                 } else {
                     // Muestra un mensaje de error si las credenciales son incorrectas
-                    alert(data);
+                    alert(data.error);
                 }
 
             } catch (error) {

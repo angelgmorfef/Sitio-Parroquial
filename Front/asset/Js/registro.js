@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (response.ok) {
                 alert('¡Registro exitoso! Ya puedes iniciar sesión.');
                 // Aquí podrías redirigir al usuario a la página de ingreso
-                window.location.href = 'login.html';
+                window.location.href = 'ingreso.html';
             } else {
                 // Si la respuesta no es exitosa, muestra un mensaje de error
                 const errorText = await response.text();
