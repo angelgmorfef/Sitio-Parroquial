@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendario - Parroquia Jesús Obrero</title>
+    <meta name="description" content="Calendario de eventos y celebraciones de la Parroquia Jesús Obrero. Mantente al tanto de todas nuestras actividades.">
+    <meta name="keywords" content="Parroquia, Iglesia, Jesús Obrero, Calendario, Eventos, Horarios, Misa, Celebraciones">
+    <meta name="author" content="Parroquia Jesús Obrero">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://tusitio.com/calendario.html">
+    <meta property="og:title" content="Calendario - Parroquia Jesús Obrero">
+    <meta property="og:description" content="Calendario de eventos y celebraciones de la Parroquia Jesús Obrero.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tusitio.com/calendario.html">
+    <meta property="og:image" content="URL_de_una_imagen_representativa.jpg">
+    <link rel="stylesheet" href="asset/Css/calendario.css">
+    <link rel="icon" href="asset/Img/iglesia.png" type="image/x-icon">
+    <script defer src="asset/Js/buscador.js"></script>
+    <script defer src="asset/Js/calendario.js"></script>
+    <script defer src="asset/Js/scroll.js"></script>
+    <script defer src="asset/Js/chat.js"></script>
+</head>
+<body>
+    <header class="header-container" style="background-image: url('https://million-wallpapers.ru/wallpapers/5/16/457409723105280/fondo-negro-con-un-tono-claro-en-el-medio.jpg?hl=es');">
+        <h1 class="logo">
+            <img src="asset/Img/iglesiafav.png" alt="cruz-cristiana" class="logo-image">
+            PARROQUIA JESUS OBRERO
+        </h1>
+        <form class="search-form" action="/search" method="get">
+            <input type="search" placeholder="Buscar..." name="q" class="search-input">
+            <button type="submit" class="search-button">
+                <img src="asset/Img/lupa.png" alt="Buscar" class="search-icon" style="width: 20px; height: 20px;">
+            </button>
+        </form>
+    </header>
+    <div class="nav-container">
+        <nav class="nav">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="#">Servicios</a></li>
+                <li><a href="calendario.html">Calendario</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+    </div>
+    <button id="back-to-top-btn" title="Volver arriba">&#8593;</button>
+    <button class="chat-toggle-btn">Envíanos un mensaje</button>
+    <div class="chat-window">
+        <div class="chat-header">
+            <h3>Chat en Vivo</h3>
+            <button class="chat-close-btn">&times;</button>
+        </div>
+        <div class="chat-body">
+            <p>¡Hola! ¿En qué podemos ayudarle?</p>
+        </div>
+        <div class="chat-footer">
+            <input type="text" placeholder="Escribe un mensaje..." />
+            <button>Enviar</button>
+        </div>
+    </div>
+    <main class="main-content">
+        <div class="calendar-container">
+            <div class="calendar-header" role="navigation" aria-label="Navegación del calendario">
+                <button id="prevBtn" aria-label="Mes anterior">&lt;</button>
+                <h2 id="monthYear"></h2>
+                <button id="nextBtn" aria-label="Mes siguiente">&gt;</button>
+            </div>
+            <table class="calendar-table">
+                <thead>
+                    <tr>
+                        <th>Dom</th>
+                        <th>Lun</th>
+                        <th>Mar</th>
+                        <th>Mié</th>
+                        <th>Jue</th>
+                        <th>Vie</th>
+                        <th>Sáb</th>
+                    </tr>
+                </thead>
+                <tbody id="calendar-body"></tbody>
+            </table>
+        </div>
+    </main>
+    <footer class="footer" style="background-image: url('https://million-wallpapers.ru/wallpapers/5/16/457409723105280/fondo-negro-con-un-tono-claro-en-el-medio.jpg?hl=es');">
+        <p>&copy; 2025 Parroquia Jesús Obrero. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
+
+//Byebye

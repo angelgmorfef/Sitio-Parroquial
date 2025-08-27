@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parroquia Jesús Obrero</title>
+    <meta name="description" content="Sitio web oficial de la Parroquia Jesús Obrero: información, servicios religiosos, noticias actualizadas y calendario de eventos. Únete a nuestra comunidad.">
+    <meta name="keywords" content="Parroquia, Iglesia, Jesús Obrero, Horarios de Misa, Sacramentos, Noticias, Eventos, Comunidad Católica">
+    <meta name="author" content="Parroquia Jesús Obrero">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://tusitio.com/">
+    <meta property="og:title" content="Parroquia Jesús Obrero">
+    <meta property="og:description" content="Información, servicios, noticias y calendario de la Parroquia Jesús Obrero.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tusitio.com/">
+    <meta property="og:image" content="URL_de_una_imagen_representativa.jpg">
+    <link rel="stylesheet" href="asset/Css/index.css">
+    <link rel="icon" href="asset/Img/iglesia.png" type="image/x-icon">
+    <script defer src="asset/Js/buscador.js"></script>
+    <script defer src="asset/Js/scroll.js"></script>
+    <script defer src="asset/Js/carrusel.js"></script>
+    <script defer src="asset/Js/chat.js"></script>
+</head>
+<body>
+    <header class="header-container">
+        <h1 class="logo">
+            <img src="asset/Img/iglesiafav.png" alt="cruz-cristiana" class="logo-image">
+            PARROQUIA JESUS OBRERO
+        </h1>
+        <form class="search-form" action="/search" method="get">
+            <input type="search" placeholder="Buscar..." name="q" class="search-input">
+            <button type="submit" class="search-button">
+                <img src="asset/Img/lupa.png" alt="Buscar" class="search-icon" style="width: 20px; height: 20px;">
+            </button>
+        </form>
+    </header>
+    <div class="nav-container">
+        <nav class="nav">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="#">Servicios</a></li>
+                <li><a href="calendario.html">Calendario</a></li>
+                <li><a href="#">Contacto</a></li>
+                <li><a href="registro.html">Registro</a></li>
+                <li><a href="ingreso.html">Ingreso</a></li>
+            </ul>
+        </nav>
+    </div>
+    <button id="back-to-top-btn" title="Volver arriba">&#8593;</button>
+    <button class="chat-toggle-btn">Envíanos un mensaje</button>
+    <div class="chat-window">
+        <div class="chat-header">
+            <h3>Chat en Vivo</h3>
+            <button class="chat-close-btn">&times;</button>
+        </div>
+        <div class="chat-body">
+            <p>¡Hola! ¿En qué podemos ayudarle?</p>
+        </div>
+        <div class="chat-footer">
+            <input type="text" placeholder="Escribe un mensaje..." />
+            <button>Enviar</button>
+        </div>
+    </div>
+    <main>
+        <section class="carrusel" id="carrusel">
+            <div class="slides">
+                <div class="slide active">
+                    <img src="https://img.freepik.com/free-photo/aerial-beautiful-shot-seashore-with-hills-background-sunset_181624-24143.jpg?semt=ais_hybrid&w=740&q=80" alt="Descripción detallada de la imagen 1.">
+                    <p>Descripción de la imagen 1.</p>
+                </div>
+                <div class="slide">
+                    <img src="https://img.freepik.com/free-photo/vestrahorn-mountains-stokksnes-iceland_335224-667.jpg?semt=ais_hybrid&w=740&q=80" alt="Descripción detallada de la imagen 2.">
+                    <p>Descripción de la imagen 2.</p>
+                </div>
+                <div class="slide">
+                    <img src="https://t4.ftcdn.net/jpg/04/39/89/01/360_F_439890152_sYbPxa1ANTSKcZuUsKzRAf9O7bJ1Tx5B.jpg" alt="Descripción detallada de la imagen 3.">
+                    <p>Descripción de la imagen 3.</p>
+                </div>
+            </div>
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+        </section>
+        <section class="noticias-calendario">
+            <div class="columna-noticias">
+                <h3>Últimas Noticias</h3>
+                <article>
+                    <h4>Título de la Noticia 1</h4>
+                    <p>Breve resumen de la primera noticia. Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                    <a href="#">Leer más</a>
+                </article>
+                <article>
+                    <h4>Título de la Noticia 2</h4>
+                    <p>Breve resumen de la segunda noticia. Ut enim ad minim veniam, quis nostrud exercitation...</p>
+                    <a href="#">Leer más</a>
+                </article>
+            </div>
+            <aside class="columna-calendario">
+                <h3>Calendario</h3>
+                <a href="calendario.html">Vista del Calendario</a>
+                <ul>
+                    <li>
+                        <h4>Evento de la semana</h4>
+                        <p>Fecha: 25 de agosto</p>
+                        <p>Descripción del evento importante...</p>
+                    </li>
+                    <li>
+                        <h4>Próximo evento</h4>
+                        <p>Fecha: 1 de septiembre</p>
+                        <p>Descripción de otro evento importante...</p>
+                    </li>
+                </ul>
+            </aside>
+        </section>
+    </main>
+    <footer class="footer">
+        <p>&copy; 2025 Parroquia Jesús Obrero. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

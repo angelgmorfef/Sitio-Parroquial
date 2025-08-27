@@ -1,0 +1,44 @@
+require('dotenv').config(); // Carga las variables de entorno al inicio
+
+const express = require('express');
+const path = require('path');
+const mongoose = require('mongoose');
+
+// Importa el nuevo archivo de rutas
+const parroquiaRoutes = require('./Routes/parroquiaRoutes');
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+// Middleware para procesar datos JSON
+app.use(express.json());
+
+// Función asíncrona para iniciar el servidor
+async function startServer() {
+    try {
+        // Conecta a la base de datos de MongoDB Atlas usando la variable de entorno
+        await mongoose.connect(process.env.MONGO_URI);
+        console.log("✅ Conectado exitosamente a la base de datos de MongoDB Atlas.");
+
+        // Sirve los archivos estáticos (frontend)
+        app.use(express.static(path.join(__dirname, '../frontend')));
+        
+        app.get('/', (req, res) => {
+            res.sendFile(path.join(__dirname, '../frontend', 'index.html'));
+        });
+
+        // Usa el router para todas las rutas de la API
+        app.use('/', parroquiaRoutes);
+
+        // Inicia el servidor
+        app.listen(PORT, () => {
+            console.log(`🚀 Servidor escuchando en http://localhost:${PORT}`);
+        });
+
+    } catch (e) {
+        console.error("❌ Error al conectar a la base de datos:", e);
+    }
+}
+
+// Llama a la función para iniciar el servidor
+startServer();
