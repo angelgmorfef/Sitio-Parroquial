@@ -10,7 +10,8 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ./Back:/app
+      - .:/app
+    command: ["node", "/app/Back/server.js"] # Agrega esta línea
     environment:
       - MONGO_URI=${MONGO_URI}
       - JWT_SECRET=${JWT_SECRET}

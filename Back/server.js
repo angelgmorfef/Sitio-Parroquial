@@ -20,11 +20,11 @@ async function startServer() {
         await mongoose.connect(process.env.MONGO_URI);
         console.log("✅ Conectado exitosamente a la base de datos de MongoDB Atlas.");
 
-        // Sirve los archivos estáticos (frontend)
-        app.use(express.static(path.join(__dirname, '../frontend')));
+        // Sirve los archivos estáticos (Front)
+        app.use(express.static(path.join(__dirname, '../Front')));
         
         app.get('/', (req, res) => {
-            res.sendFile(path.join(__dirname, '../frontend', 'index.html'));
+            res.sendFile(path.join(__dirname, '../Front', 'index.html'));
         });
 
         // Usa el router para todas las rutas de la API
