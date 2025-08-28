@@ -1,22 +1,33 @@
-# Usa una imagen base de Node.js
-FROM node:22-alpine
+# ----- ETAPA 1: CONSTRUCCIÓN -----
+# Usamos una imagen de Node.js más robusta para instalar las dependencias
+FROM node:18-alpine AS build
 
-# Establece el directorio de trabajo en la raíz de la aplicación
+# Establece el directorio de trabajo dentro del contenedor
 WORKDIR /app
 
-# Copia las carpetas del backend y del frontend
-# Esto copiará tanto el código del servidor como los archivos web
-COPY Back ./backend
-COPY Front ./frontend
+# Copia los archivos de manifiesto del proyecto (package.json y package-lock.json)
+# Esto permite que Docker use el cache de la capa para instalar las dependencias
+COPY package*.json ./
 
-# Establece el directorio de trabajo para instalar las dependencias
-WORKDIR /app/backend
-
-# Instala todas las dependencias del proyecto
+# Instala las dependencias del proyecto
 RUN npm install
 
-# Expone el puerto que la aplicación escuchará
+# Copia el resto del código de la aplicación
+COPY . .
+
+# ----- ETAPA 2: EJECUCIÓN -----
+# Usamos una imagen base más pequeña para el entorno de ejecución
+FROM node:18-alpine
+
+# Establece el directorio de trabajo
+WORKDIR /app
+
+# Copia los archivos necesarios de la etapa de construcción a esta nueva etapa
+COPY --from=build /app/node_modules ./node_modules
+COPY --from=build /app/ .
+
+# Expone el puerto en el que la aplicación escuchará
 EXPOSE 3000
 
-# Comando para iniciar la aplicación cuando el contenedor arranque
+# Define el comando para ejecutar la aplicación
 CMD ["node", "server.js"]
