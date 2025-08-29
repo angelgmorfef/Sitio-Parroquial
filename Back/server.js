@@ -28,7 +28,7 @@ async function startServer() {
         });
 
         // Usa el router para todas las rutas de la API
-        app.use('/', parroquiaRoutes);
+        app.use('/api', parroquiaRoutes);
 
         // Inicia el servidor
         app.listen(PORT, () => {

@@ -1,64 +1,79 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../models/User'); // Asegúrate de que esta ruta sea correcta
+const User = require('../models/User'); 
+const bcrypt = require('bcryptjs'); 
 const jwt = require('jsonwebtoken');
-
-// Clave secreta para JWT (la moveremos al archivo .env más tarde)
-const jwtSecret = 'tu_clave_secreta_super_segura_aqui';
-
-// Middleware de autenticación (lo movemos aquí también)
-function verifyToken(req, res, next) {
-    const authHeader = req.headers['authorization'];
-    const token = authHeader && authHeader.split(' ')[1];
-
-    if (token == null) return res.sendStatus(401);
-
-    jwt.verify(token, jwtSecret, (err, user) => {
-        if (err) return res.sendStatus(403);
-        req.user = user;
-        next();
-    });
-}
+const protect = require('../authMiddleware'); 
 
 // ============== RUTA DE REGISTRO ==============
 router.post('/register', async (req, res) => {
     try {
-        const { username, password } = req.body;
-        const newUser = new User({ username, password });
-        await newUser.save();
-        res.status(201).json({ message: '¡Usuario registrado con éxito!' });
+        const { nombre, apellido, correo, username, password } = req.body;
+        
+        // Verifica si el usuario o el correo ya existen
+        let user = await User.findOne({ $or: [{ username }, { correo }] });
+        if (user) {
+            return res.status(400).json({ msg: 'El usuario o el correo ya existen.' });
+        }
+
+        // Crea una instancia del nuevo usuario con todos los campos
+        user = new User({ nombre, apellido, correo, username, password });
+
+        // La contraseña se encripta y el usuario se guarda gracias al middleware 'pre' en el modelo User.js
+        await user.save();
+        
+        res.status(201).json({ msg: '¡Usuario registrado con éxito!' });
     } catch (error) {
-        res.status(400).json({ error: 'Error al registrar el usuario: ' + error.message });
+        console.error(error.message);
+        res.status(500).send('Error interno del servidor.');
     }
 });
 
 // ============== RUTA DE LOGIN ==============
 router.post('/login', async (req, res) => {
     try {
-        const { email, password } = req.body;
-        const user = await User.findOne({ username: email });
+        const { username, password } = req.body;
 
-        if (!user || user.password !== password) {
-            return res.status(401).json({ error: 'Correo o contraseña incorrectos.' });
+        const user = await User.findOne({ username });
+        if (!user) {
+            return res.status(400).json({ msg: 'Credenciales inválidas.' });
+        }
+
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) {
+            return res.status(400).json({ msg: 'Credenciales inválidas.' });
         }
 
         const payload = {
-            id: user._id,
-            username: user.username
+            user: {
+                id: user.id
+            }
         };
 
-        const token = jwt.sign(payload, jwtSecret, { expiresIn: '1h' });
-        res.status(200).json({ token: token });
-
+        jwt.sign(
+            payload,
+            process.env.JWT_SECRET,
+            { expiresIn: '1h' },
+            (err, token) => {
+                if (err) throw err;
+                res.json({ token });
+            }
+        );
     } catch (error) {
-        res.status(500).json({ error: 'Error interno del servidor.' });
-        console.error('Error al intentar iniciar sesión:', error);
+        console.error(error.message);
+        res.status(500).send('Error interno del servidor.');
     }
 });
 
 // ============== RUTA PROTEGIDA DE EJEMPLO ==============
-router.get('/api/protected', verifyToken, (req, res) => {
-    res.json({ message: `¡Hola ${req.user.username}! Bienvenido a la sección privada. Tu ID de usuario es ${req.user.id}` });
+router.get('/api/protected', protect, async (req, res) => {
+    try {
+        const user = await User.findById(req.user.id).select('-password');
+        res.json(user);
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send('Error interno del servidor.');
+    }
 });
 
 module.exports = router;
