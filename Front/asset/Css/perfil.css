@@ -1,0 +1,38 @@
+/* Estilos para el contenedor principal de la página de perfil */
+.profile-container {
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: var(--bg-white);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    text-align: center;
+}
+
+/* Estilo para el título dentro del contenedor del perfil */
+.profile-container h1 {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Estilo para los párrafos de información del usuario */
+.profile-container p {
+    color: var(--text-dark);
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+/* Destaca las etiquetas fuertes (strong) dentro de los párrafos */
+.profile-container p strong {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+/* Estilo para el mensaje de bienvenida */
+#welcome-message {
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+    margin-bottom: 30px;
+}

@@ -56,9 +56,11 @@ router.post('/login', async (req, res) => {
             { expiresIn: '1h' },
             (err, token) => {
                 if (err) throw err;
-                res.json({ token });
+                // Ahora enviamos el nombre de usuario junto con el token
+                res.json({ token, username: user.username });
             }
         );
+
     } catch (error) {
         console.error(error.message);
         res.status(500).send('Error interno del servidor.');
@@ -77,3 +79,23 @@ router.get('/api/protected', protect, async (req, res) => {
 });
 
 module.exports = router;
+
+// ============== RUTA PROTEGIDA PARA OBTENER EL PERFIL DEL USUARIO ==============
+router.get('/api/user/profile', protect, async (req, res) => {
+    try {
+        // 'req.user.id' viene del middleware 'protect'
+        // Buscamos al usuario en la base de datos excluyendo la contraseña
+        const user = await User.findById(req.user.id).select('-password');
+        
+        // Si no se encuentra el usuario, enviamos un error 404
+        if (!user) {
+            return res.status(404).json({ msg: 'Usuario no encontrado' });
+        }
+        
+        // Enviamos la información del usuario como respuesta
+        res.json(user);
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send('Error del servidor');
+    }
+});
