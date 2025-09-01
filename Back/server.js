@@ -1,6 +1,7 @@
-require('dotenv').config(); // Carga las variables de entorno al inicio
+require('dotenv').config({ path: '../.env' });
 
 const express = require('express');
+const cors = require('cors'); // Importa el middleware de CORS
 const path = require('path');
 const mongoose = require('mongoose');
 
@@ -12,6 +13,7 @@ const PORT = process.env.PORT || 3000;
 
 // Middleware para procesar datos JSON
 app.use(express.json());
+app.use(cors()); // Usa el middleware de CORS aquí
 
 // Función asíncrona para iniciar el servidor
 async function startServer() {

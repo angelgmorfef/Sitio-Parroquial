@@ -22,17 +22,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Parse the response to JSON once.
                 const data = await response.json();
-
+// ... (código existente)
                 if (response.ok) {
-                    // Save the token and username from the parsed data
-                    localStorage.setItem('authToken', data.token);
-                    localStorage.setItem('username', data.username);
-                    
-                    alert('¡Inicio de sesión exitoso!');
-                    
-                    const redirectTo = localStorage.getItem('redirectAfterLogin') || 'index.html';
-                    localStorage.removeItem('redirectAfterLogin');
-                    window.location.href = redirectTo; 
+                localStorage.setItem('authToken', data.token);
+                localStorage.setItem('username', data.username);
+                alert('¡Inicio de sesión exitoso!');
+                
+                // *** CAMBIA ESTA LÍNEA ***
+                // window.location.href = 'index.html'; // Lo que tenías
+                window.location.href = 'perfil.html'; // Lo correcto
+// ... (código restante)
                 } else {
                     // Display the error message from the parsed data
                     alert(data.msg || 'Credenciales inválidas.');
