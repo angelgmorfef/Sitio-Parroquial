@@ -1,24 +1,41 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ingreso de Usuario</title>
-  <link rel="stylesheet" href="asset/Css/regis&ingres.css">
-  <script src="asset/Js/ingreso.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingreso - Parroquia Jesús Obrero</title>
+    <meta name="description" content="Página de ingreso para acceder a tu perfil en el sitio de la Parroquia Jesús Obrero.">
+    <meta name="keywords" content="Parroquia, Iglesia, Jesús Obrero, Ingreso, Acceso, Login, Usuario">
+    <meta name="author" content="Parroquia Jesús Obrero">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://tusitio.com/ingreso.html">
+    <meta property="og:title" content="Ingreso - Parroquia Jesús Obrero">
+    <meta property="og:description" content="Accede a tu cuenta de la Parroquia Jesús Obrero.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tusitio.com/ingreso.html">
+    <meta property="og:image" content="URL_de_una_imagen_representativa.jpg">
+    <link rel="stylesheet" href="asset/Css/regis&ingres.css">
+    <link rel="icon" href="asset/Img/iglesia.png" type="image/x-icon">
+    <script defer src="asset/Js/buscador.js"></script>
+    <script defer src="asset/Js/scroll.js"></script>
+    <script defer src="asset/Js/chat.js"></script>
+    <script defer src="asset/Js/ingreso.js"></script>
 </head>
 <body>
-  <div class="form-container">
-    <h2>Ingreso</h2>
-    <form id="login-form">
-            <label for="username-input">Usuario:</label>
-      <input type="text" id="username-input" required>
-      
-      <label for="password-input">Contraseña:</label>
-      <input type="password" id="password-input" required>
-      
-      <button type="submit">Ingresar</button>
-    </form>
-  </div>
+    <main class="main-content">
+        <div class="form-container">
+            <h2>Ingreso</h2>
+            <form id="login-form">
+                <label for="email-input">Correo:</label>
+                <input type="email" id="email-input" name="email" aria-label="Ingresa tu correo electrónico" required>
+
+                <label for="password-input">Contraseña:</label>
+                <input type="password" id="password-input" name="password" aria-label="Ingresa tu contraseña" required>
+
+                <button type="submit">Ingresar</button>
+            </form>
+            <p>¿No tienes cuenta? <a href="registro.html">Regístrate aquí</a></p>
+        </div>
+    </main>
 </body>
 </html>

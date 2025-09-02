@@ -1,33 +1,50 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registro de Usuario</title>
-  <link rel="stylesheet" href="asset/Css/regis&ingres.css">
-  <script src="asset/Js/registro.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Parroquia Jesús Obrero</title>
+    <meta name="description" content="Regístrate para crear una cuenta en el sitio de la Parroquia Jesús Obrero.">
+    <meta name="keywords" content="Parroquia, Iglesia, Jesús Obrero, Registro, Cuenta, Inscribir">
+    <meta name="author" content="Parroquia Jesús Obrero">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://tusitio.com/registro.html">
+    <meta property="og:title" content="Registro - Parroquia Jesús Obrero">
+    <meta property="og:description" content="Crea tu cuenta en la Parroquia Jesús Obrero.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tusitio.com/registro.html">
+    <meta property="og:image" content="URL_de_una_imagen_representativa.jpg">
+    <link rel="stylesheet" href="asset/Css/regis&ingres.css">
+    <link rel="icon" href="asset/Img/iglesia.png" type="image/x-icon">
+    <script defer src="asset/Js/buscador.js"></script>
+    <script defer src="asset/Js/scroll.js"></script>
+    <script defer src="asset/Js/chat.js"></script>
+    <script defer src="asset/Js/registro.js"></script>
 </head>
 <body>
-  <div class="form-container">
-    <h2>Registro</h2>
-    <form id="registerForm">
-      <label for="nombre-input">Nombre:</label>
-      <input type="text" id="nombre-input" name="nombre" required>
+    <main class="main-content">
+        <div class="form-container">
+            <h2>Registro</h2>
+            <form id="registerForm">
+                <label for="nombre-input">Nombre:</label>
+                <input type="text" id="nombre-input" name="nombre" aria-label="Ingresa tu nombre" required>
 
-      <label for="apellido-input">Apellido:</label>
-      <input type="text" id="apellido-input" name="apellido" required>
+                <label for="apellido-input">Apellido:</label>
+                <input type="text" id="apellido-input" name="apellido" aria-label="Ingresa tu apellido" required>
 
-      <label for="email-input">Correo:</label>
-      <input type="email" id="email-input" name="correo" required>
+                <label for="email-input">Correo:</label>
+                <input type="email" id="email-input" name="correo" aria-label="Ingresa tu correo electrónico" required>
+                
+                <label for="password-input">Contraseña:</label>
+                <input type="password" id="password-input" name="password" aria-label="Crea una contraseña" required>
+                
+                <label for="confirm-password-input">Verificar Contraseña:</label>
+                <input type="password" id="confirm-password-input" name="confirm-password" aria-label="Verifica tu contraseña" required>
 
-      <label for="username-input">Nombre de Usuario:</label>
-      <input type="text" id="username-input" name="username" required>
-      
-      <label for="password-input">Contraseña:</label>
-      <input type="password" id="password-input" name="password" required>
-
-      <button type="submit">Registrar</button>
-    </form>
-  </div>
+                <button type="submit" id="register-button">Registrarse</button>
+            </form>
+            <p>¿Ya tienes una cuenta? <a href="ingreso.html">Ingresa aquí</a></p>
+        </div>
+    </main>
 </body>
 </html>
