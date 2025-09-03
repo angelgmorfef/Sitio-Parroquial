@@ -15,10 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 const nombre = document.getElementById('nombre-input').value.trim();
                 const apellido = document.getElementById('apellido-input').value.trim();
                 const correo = document.getElementById('email-input').value.trim();
-                const username = document.getElementById('username-input').value.trim();
                 const password = document.getElementById('password-input').value.trim();
-            
-                if (!nombre || !apellido || !correo || !username || !password) {
+
+                if (!nombre || !apellido || !correo || !password) {
                     alert('Por favor, complete todos los campos.');
                     return;
                 }
@@ -28,11 +27,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ nombre, apellido, correo, username, password }),
-                    signal: controller.signal // Asocia el timeout a la solicitud
+                    body: JSON.stringify({ nombre, apellido, correo, password }),
+                    signal: controller.signal
                 });
 
-                clearTimeout(timeoutId); // Limpia el timeout si la solicitud es exitosa
+                clearTimeout(timeoutId);
 
                 const data = await response.json();
 

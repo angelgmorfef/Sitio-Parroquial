@@ -1,38 +1,252 @@
-/* Estilos para el contenedor principal de la página de perfil */
+/* perfil.css */
+
+/*
+  Este archivo CSS estiliza el perfil de usuario.
+  Utiliza las variables de color del archivo principal (index.css)
+  para asegurar una apariencia unificada.
+*/
+
+/* --- Variables de Color (Reutilizadas del index.css) --- */
+/*
+  Las variables ya están definidas en el index.css, por lo que
+  no es necesario repetirlas aquí si se usa un sistema de
+  importación de CSS o si ambos archivos se cargan en la misma página.
+  Las incluyo aquí para referencia y uso autónomo.
+*/
+:root {
+  --primary-color: #aa0000;
+  --secondary-color: #d70d0d;
+  --accent-color: #3498db;
+  --text-light: #ecf0f1;
+  --text-dark: #333;
+  --bg-light: #f4f4f4;
+  --bg-white: #fff;
+  --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Estilos Generales y del Cuerpo --- */
+body {
+  /*
+    Mantiene la misma tipografía y fondo que el index.
+    Esto asegura coherencia visual en todo el sitio.
+  */
+  font-family: "Gruppo", sans-serif;
+  line-height: 1.6;
+  background-color: var(--bg-light);
+  background-image: url('https://wallpapers.com/images/high/white-carrara-marble-p3apltr0gehv3bh9.webp');
+  background-size: cover;
+  background-position: center;
+  margin: 0;
+  padding: 0;
+}
+
+/* --- Estilos del Header y Navegación --- */
+/*
+  Reutiliza las clases del header del index para mantener el diseño
+  consistente en la cabecera del sitio.
+*/
+.main-header {
+  background-color: #000000ca;
+  color: var(--text-light);
+  padding: 20px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box; /* Asegura que el padding no cause desbordamiento */
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.logo {
+  font-family: "Libertinus Keyboard", system-ui;
+  font-size: 40px;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  color: var(--text-light);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1em;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--accent-color);
+}
+
+/* --- Contenedor Principal del Perfil --- */
 .profile-container {
-    max-width: 800px;
-    margin: 50px auto;
-    background-color: var(--bg-white);
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: var(--shadow);
+  max-width: 900px;
+  margin: 40px auto; /* Centra el contenedor y le da espacio */
+  background: var(--bg-white);
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 30px; /* Espacio entre secciones del perfil */
+}
+
+/* --- Estilos de la Sección de Cabecera del Perfil --- */
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.profile-picture {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 4px solid var(--primary-color);
+  object-fit: cover; /* Asegura que la imagen no se distorsione */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-header h1 {
+  font-size: 2.5em;
+  margin: 20px 0 5px;
+  color: var(--text-dark);
+}
+
+.profile-header p {
+  font-size: 1.2em;
+  color: var(--text-dark);
+  margin-top: 0;
+}
+
+/* --- Estilos de las Secciones de Detalles y Bio --- */
+.profile-details,
+.profile-bio {
+  background: var(--bg-light);
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.profile-details h2,
+.profile-bio h2 {
+  font-size: 1.8em;
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 10px;
+  margin-top: 0;
+}
+
+.info-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.info-group:last-child {
+  border-bottom: none;
+}
+
+.info-label {
+  font-weight: bold;
+  color: var(--text-dark);
+}
+
+.info-value {
+  color: var(--text-dark);
+}
+
+.profile-bio p {
+  color: var(--text-dark);
+  line-height: 1.8;
+}
+
+/* --- Estilos de los Botones de Acción --- */
+.profile-actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.profile-actions button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.edit-button {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+}
+
+.edit-button:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-2px);
+}
+
+.change-password-button {
+  background-color: var(--accent-color);
+  color: var(--text-light);
+}
+
+.change-password-button:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+}
+
+/* --- Estilos del Footer --- */
+.main-footer {
+  background-color: #000000ca;
+  color: var(--text-light);
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+/* --- Media Queries para Responsividad --- */
+@media (max-width: 768px) {
+  .main-header {
+    flex-direction: column;
+    padding: 20px;
     text-align: center;
-}
+  }
 
-/* Estilo para el título dentro del contenedor del perfil */
-.profile-container h1 {
-    color: var(--primary-color);
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 20px;
-}
+  .nav-links {
+    margin-top: 15px;
+    gap: 15px;
+  }
 
-/* Estilo para los párrafos de información del usuario */
-.profile-container p {
-    color: var(--text-dark);
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-}
+  .profile-container {
+    margin: 20px;
+    padding: 20px;
+  }
 
-/* Destaca las etiquetas fuertes (strong) dentro de los párrafos */
-.profile-container p strong {
-    color: var(--primary-color);
-    font-weight: bold;
-}
+  .profile-header h1 {
+    font-size: 2em;
+  }
 
-/* Estilo para el mensaje de bienvenida */
-#welcome-message {
-    font-size: 1.5rem;
-    color: var(--secondary-color);
-    margin-bottom: 30px;
+  .profile-actions {
+    flex-direction: column;
+    align-items: center;
+  }
 }

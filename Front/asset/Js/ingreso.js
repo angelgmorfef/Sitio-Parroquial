@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
         loginForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            const usernameInput = document.getElementById('username-input').value;
+            const emailInput = document.getElementById('email-input').value;
             const passwordInput = document.getElementById('password-input').value;
 
             try {
@@ -15,25 +15,19 @@ document.addEventListener('DOMContentLoaded', () => {
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-                        username: usernameInput,
+                        correo: emailInput,
                         password: passwordInput
                     })
                 });
 
-                // Parse the response to JSON once.
                 const data = await response.json();
-// ... (código existente)
+
                 if (response.ok) {
-                localStorage.setItem('authToken', data.token);
-                localStorage.setItem('username', data.username);
-                alert('¡Inicio de sesión exitoso!');
-                
-                // *** CAMBIA ESTA LÍNEA ***
-                // window.location.href = 'index.html'; // Lo que tenías
-                window.location.href = 'perfil.html'; // Lo correcto
-// ... (código restante)
+                    localStorage.setItem('authToken', data.token);
+                    localStorage.setItem('username', data.username);
+                    alert('¡Inicio de sesión exitoso!');
+                    window.location.href = 'perfil.html';
                 } else {
-                    // Display the error message from the parsed data
                     alert(data.msg || 'Credenciales inválidas.');
                 }
             } catch (error) {

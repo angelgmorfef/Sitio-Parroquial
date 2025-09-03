@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     const token = localStorage.getItem('authToken');
 
     if (!token) {
-        // Si no hay token, redirige al usuario a la página de login
         window.location.href = 'ingreso.html';
         return;
     }
@@ -12,26 +11,21 @@ document.addEventListener('DOMContentLoaded', async () => {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}` // Envía el token en el encabezado
+                'Authorization': `Bearer ${token}`
             }
         });
 
         const data = await response.json();
 
         if (response.ok) {
-            const welcomeMessage = document.getElementById('welcome-message');
-            welcomeMessage.textContent = `¡Bienvenido, ${data.username}!`;
+            document.getElementById('user-name').textContent = data.nombre + ' ' + data.apellido;
+            document.getElementById('user-email').textContent = data.correo;
+            document.getElementById('welcome-message').textContent = `¡Bienvenido, ${data.nombre}!`;
+            document.getElementById('user-display-name').textContent = data.nombre;
+            document.getElementById('user-bio-name').textContent = data.nombre;
 
-            const profileDiv = document.getElementById('user-profile');
-            profileDiv.innerHTML = `
-                <p><strong>Nombre:</strong> ${data.nombre}</p>
-                <p><strong>Apellido:</strong> ${data.apellido}</p>
-                <p><strong>Correo:</strong> ${data.correo}</p>
-                <p><strong>Fecha de Registro:</strong> ${new Date(data.date).toLocaleDateString()}</p>
-            `;
         } else {
             alert(data.msg || 'Error al cargar el perfil.');
-            // Si hay un error, el token puede ser inválido, así que redirigimos
             localStorage.removeItem('authToken');
             window.location.href = 'ingreso.html';
         }

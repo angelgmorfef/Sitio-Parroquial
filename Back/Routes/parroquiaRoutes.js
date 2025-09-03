@@ -8,28 +8,28 @@ const protect = require('../authMiddleware');
 // ============== RUTA DE REGISTRO ==============
 router.post('/register', async (req, res) => {
     try {
-        const { nombre, apellido, correo, username, password } = req.body;
+        const { nombre, apellido, correo, password } = req.body;
         
-        let user = await User.findOne({ $or: [{ username }, { correo }] });
+        let user = await User.findOne({ correo }); 
         if (user) {
-            return res.status(400).json({ msg: 'El usuario o el correo ya existen.' });
+            return res.status(400).json({ msg: 'El correo ya está registrado.' });
         }
 
-        user = new User({ nombre, apellido, correo, username, password });
+        user = new User({ nombre, apellido, correo, password });
         await user.save();
         
         res.status(201).json({ msg: '¡Usuario registrado con éxito!' });
     } catch (error) {
         console.error(error.message);
-        res.status(500).send('Error interno del servidor.');
+        res.status(500).json({ msg: 'Error interno del servidor.' });
     }
 });
 
 // ============== RUTA DE LOGIN ==============
 router.post('/login', async (req, res) => {
     try {
-        const { username, password } = req.body;
-        const user = await User.findOne({ username });
+        const { correo, password } = req.body;
+        const user = await User.findOne({ correo });
         if (!user) {
             return res.status(400).json({ msg: 'Credenciales inválidas.' });
         }
@@ -51,24 +51,13 @@ router.post('/login', async (req, res) => {
             { expiresIn: '1h' },
             (err, token) => {
                 if (err) throw err;
-                res.json({ token, username: user.username });
+                res.json({ token, username: user.username, email: user.correo });
             }
         );
 
     } catch (error) {
         console.error(error.message);
-        res.status(500).send('Error interno del servidor.');
-    }
-});
-
-// ============== RUTA PROTEGIDA DE EJEMPLO ==============
-router.get('/protected', protect, async (req, res) => {
-    try {
-        const user = await User.findById(req.user.id).select('-password');
-        res.json(user);
-    } catch (error) {
-        console.error(error.message);
-        res.status(500).send('Error interno del servidor.');
+        res.status(500).json({ msg: 'Error interno del servidor.' });
     }
 });
 
@@ -82,7 +71,7 @@ router.get('/user/profile', protect, async (req, res) => {
         res.json(user);
     } catch (error) {
         console.error(error.message);
-        res.status(500).send('Error del servidor');
+        res.status(500).json({ msg: 'Error del servidor' });
     }
 });
 

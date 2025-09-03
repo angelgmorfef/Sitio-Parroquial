@@ -16,9 +16,6 @@
     <meta property="og:image" content="URL_de_una_imagen_representativa.jpg">
     <link rel="stylesheet" href="asset/Css/regis&ingres.css">
     <link rel="icon" href="asset/Img/iglesia.png" type="image/x-icon">
-    <script defer src="asset/Js/buscador.js"></script>
-    <script defer src="asset/Js/scroll.js"></script>
-    <script defer src="asset/Js/chat.js"></script>
     <script defer src="asset/Js/registro.js"></script>
 </head>
 <body>
@@ -36,10 +33,10 @@
                 <input type="email" id="email-input" name="correo" aria-label="Ingresa tu correo electrónico" required>
                 
                 <label for="password-input">Contraseña:</label>
-                <input type="password" id="password-input" name="password" aria-label="Crea una contraseña" required>
+                <input type="password" id="password-input" name="password" aria-label="Crea una contraseña" required autocomplete="new-password">
                 
                 <label for="confirm-password-input">Verificar Contraseña:</label>
-                <input type="password" id="confirm-password-input" name="confirm-password" aria-label="Verifica tu contraseña" required>
+                <input type="password" id="confirm-password-input" name="confirm-password" aria-label="Verifica tu contraseña" required autocomplete="new-password">
 
                 <button type="submit" id="register-button">Registrarse</button>
             </form>

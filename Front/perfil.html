@@ -3,18 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil de Usuario</title>
+    <title>Perfil de Usuario | Mi Aplicación - [Nombre del Usuario]</title>
+    <meta name="description" content="Gestiona tu perfil en Mi Aplicación. Actualiza tu información personal, revisa tus actividades y personaliza tu experiencia de usuario.">
+    <meta name="keywords" content="perfil de usuario, mi aplicacion, gestion de perfil, cuenta de usuario, nombre de usuario, configuración de perfil">
+    <meta name="author" content="Mi Aplicación S.A.">
+    <link rel="canonical" href="https://www.tuaplicacion.com/perfil/nombre_de_usuario">
     <link rel="stylesheet" href="asset/Css/perfil.css">
     <script src="asset/Js/perfil.js" defer></script>
 </head>
 <body>
-    <header>
-        <h1>Mi Perfil</h1>
-        <p id="welcome-message">Cargando...</p>
-    </header>
-    <main>
-        <div id="user-profile"></div>
+    <main class="profile-container">
+        <section class="profile-header">
+            <img src="https://via.placeholder.com/150" alt="Foto de perfil de [Nombre del Usuario]" class="profile-picture">
+            <h1 id="user-name">Nombre de Usuario</h1>
+            <p id="welcome-message">¡Bienvenido de nuevo a tu perfil!</p>
+        </section>
+        <section class="profile-details">
+            <h2>Información Personal de <span id="user-display-name">[Nombre del Usuario]</span></h2>
+            <div class="info-group">
+                <span class="info-label">Correo Electrónico:</span>
+                <span id="user-email" class="info-value">correo@ejemplo.com</span>
+            </div>
+            <div class="info-group">
+                <span class="info-label">Ubicación:</span>
+                <span id="user-location" class="info-value">Ciudad, País</span>
+            </div>
+            <div class="info-group">
+                <span class="info-label">Fecha de Registro:</span>
+                <span id="user-join-date" class="info-value">01 de Enero, 2023</span>
+            </div>
+        </section>
+
+        <section class="profile-bio">
+            <h2>Acerca de <span id="user-bio-name">[Nombre del Usuario]</span></h2>
+            <p id="user-bio">Breve biografía del usuario. Este espacio describe los intereses o actividades del usuario en la plataforma.</p>
+        </section>
+
+        <section class="profile-actions">
+            <button class="edit-button" aria-label="Editar Perfil">Editar Perfil</button>
+            <button class="change-password-button" aria-label="Cambiar Contraseña">Cambiar Contraseña</button>
+        </section>
     </main>
-    <script src="asset/Js/perfil.js" defer></script>
 </body>
 </html>
