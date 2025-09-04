@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error("Los elementos del calendario no se encontraron.");
         return;
     }
-
+//jdgjfgsdi
     let date = new Date();
 
     function renderCalendar() {
