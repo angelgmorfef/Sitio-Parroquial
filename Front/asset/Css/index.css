@@ -61,11 +61,12 @@ main {
 /* Estilos para el botón de búsqueda */
 .search-button {
   padding: 8px 12px;
+  background: linear-gradient(360deg, #aa0000 0%, #ff0000 60%);
   margin-left: 5px;
   border: none;
   background-color: #ffffff93;
   color: white;
-  border-radius: 4px;
+  border-radius: 0px;
   cursor: pointer;
 }
 
@@ -111,7 +112,8 @@ h1.logo {
 }
 
 .header-button:hover {
-  background-color: #aa0000;
+  background: linear-gradient(360deg, #aa0000 0%, #ff0000 60%);
+
 }
 
 
@@ -263,7 +265,7 @@ article {
   bottom: 70px;
   width: 40px;
   height: 50px;
-  border-radius: 4px;
+  border-radius: 0px;
   border: none;
   background: linear-gradient(360deg, #a00 0%, #ff2424 60%);
   color: #ffffff;
@@ -375,9 +377,10 @@ article {
   background: linear-gradient(360deg, #a00 0%, #ff2424 60%);
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 0px;
   padding: 10px 20px;
-  font-size: 16px;
+  font-family: "Gruppo", sans-serif;
+  font-size: 20px;
   cursor: pointer;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   z-index: 9999;
@@ -406,8 +409,9 @@ article {
   right: 20px;
   width: auto;
   height: 450px;
+  font-size: 20px;
   background-color: #f0f2f5;
-  border-radius: 10px;
+  border-radius: 0px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;
@@ -428,10 +432,10 @@ article {
   justify-content: space-between;
   align-items: center;
   padding: 15px;
-  background-color: #aa0000;
   color: white;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  background: linear-gradient(360deg, #a00 0%, #ff2424 60%);
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
 }
 
 .chat-header h3 {
@@ -482,14 +486,15 @@ article {
 }
 
 .login-button {
-  background-color: var(--primary-color);
   color: var(--text-light);
+  background: linear-gradient(360deg, #a00 0%, #ff2424 60%);
   border: none;
   padding: 10px 15px;
-  border-radius: 5px;
+  border-radius: 0px;
   cursor: pointer;
   font-size: 1em;
   font-weight: bold;
+  font-family: "Gruppo", sans-serif;
   text-decoration: none;
   transition: background-color 0.3s ease;
   margin-top: 10px;
