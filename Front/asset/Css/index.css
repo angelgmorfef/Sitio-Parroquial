@@ -61,13 +61,13 @@ main {
 /* Estilos para el botón de búsqueda */
 .search-button {
   padding: 8px 12px;
-  background: linear-gradient(360deg, #aa0000 0%, #ff0000 60%);
   margin-left: 5px;
   border: none;
   background-color: #ffffff93;
   color: white;
   border-radius: 0px;
   cursor: pointer;
+  background: linear-gradient(360deg, #a00 0%, #ff2424 60%);
 }
 
 .search-button:hover {
@@ -81,7 +81,7 @@ h1.logo {
   align-items: center;
   gap: 10px;
   font-family: "Libertinus Keyboard", system-ui;
-  font-size: 40px;
+  font-size: 80px;
   color: #ffffff;
 }
 
@@ -94,7 +94,8 @@ h1.logo {
 /* Contenedor para los botones de registro e ingreso */
 .header-buttons-container {
   display: flex;
-  gap: 5px;
+  margin-left: 10px;
+  gap: 10px;
 }
 
 /* Estilos para los botones de registro e ingreso */
@@ -109,6 +110,7 @@ h1.logo {
   border-radius: 0;
   transition: background-color 0.3s ease;
   cursor: pointer;
+  background: linear-gradient(360deg, #a00 0%, #ff2424 60%);
 }
 
 .header-button:hover {
@@ -141,18 +143,21 @@ h1.logo {
   margin: 0 15px;
 }
 
-/* Estilo de los enlaces */
 .nav a {
-  color: #ecf0f1;
-  text-decoration: none;
-  font-size: 1.1rem;
-  font-weight: bold;
-  transition: color 0.3s ease;
+    /* Agrega esta línea para que el transform funcione */
+    display: inline-block;
+    color: #ecf0f1;
+    text-decoration: none;
+    font-size: 1.1rem;
+    /* Agrega una transición para que el efecto sea suave */
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out, text-decoration 0.3s ease-in-out;
 }
 
-/* Efecto al pasar el cursor */
 .nav a:hover {
-  color: #3498db;
+    color: white;
+    text-decoration: underline;
+    /* Agranda el texto al pasar el cursor */
+    transform: scale(1.1);
 }
 
 .carrusel {
