@@ -52,8 +52,8 @@ h1.logo {
 }
 
 .logo-image {
-  width: 70px;
-  height: 70px;
+  width: 200px;
+  height: 200px;
   align-content: center;
 }
 
@@ -158,10 +158,10 @@ h1.logo {
 }
 
 .header-button {
-  text-decoration: underline;
+  text-decoration: none;
   padding: 5px 10px;
+  white-space: nowrap;
   font-size: 1rem;
-  font-weight: bold;
   color: #ffffff;
   background-color: #00000000;
   border: none;
@@ -169,6 +169,7 @@ h1.logo {
   transition: background-color 0.3s ease;
   cursor: pointer;
   background: linear-gradient(360deg, #a00 0%, #ff2424 60%);
+  font-family: "Gruppo", sans-serif;
 }
 
 .header-button:hover {

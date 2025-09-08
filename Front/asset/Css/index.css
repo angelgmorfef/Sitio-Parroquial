@@ -15,11 +15,9 @@ body {
   margin: 0;
   padding: 0;
   background-color: #ffffff;
-  /* Optimización de la imagen de fondo */
   background-image: url('https://wallpapers.com/images/high/white-carrara-marble-p3apltr0gehv3bh9.webp');
   background-size: cover;
   background-position: center;
-  /* Cambio de fuente a una que esté en el HTML */
   font-family: "Gruppo", sans-serif;
   font-size: 25px;
 }
@@ -86,8 +84,8 @@ h1.logo {
 }
 
 .logo-image {
-  width: 70px;
-  height: 70px;
+  width: 200px;
+  height: 200px;
   align-content: center;
 }
 
@@ -100,10 +98,10 @@ h1.logo {
 
 /* Estilos para los botones de registro e ingreso */
 .header-button {
-  text-decoration: underline;
+  text-decoration: none;
+  white-space: nowrap;
   padding: 5px 10px;
   font-size: 1rem;
-  font-weight: bold;
   color: #ffffff;
   background-color: #00000000;
   border: none;
@@ -111,6 +109,7 @@ h1.logo {
   transition: background-color 0.3s ease;
   cursor: pointer;
   background: linear-gradient(360deg, #a00 0%, #ff2424 60%);
+  font-family: "Gruppo", sans-serif;
 }
 
 .header-button:hover {
