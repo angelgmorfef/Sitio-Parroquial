@@ -20,6 +20,7 @@
     <script defer src="asset/Js/scroll.js"></script>
     <script defer src="asset/Js/carrusel.js"></script>
     <script defer src="asset/Js/chat.js"></script>
+    <script defer src="asset/Js/index-events.js"></script> 
     <style>@import url('https://fonts.googleapis.com/css2?family=Gruppo&family=Libertinus+Keyboard&display=swap');</style>
 </head>
 <body>
@@ -101,20 +102,12 @@
                 </article>
             </div>
             <aside class="columna-calendario">
-                <h2>Calendario</h2>
-                <a href="calendario.html">Vista del Calendario</a>
-                <ul>
-                    <li>
-                        <h4>Evento de la semana</h4>
-                        <p>Fecha: 25 de agosto</p>
-                        <p>Descripción del evento importante...</p>
-                    </li>
-                    <li>
-                        <h4>Próximo evento</h4>
-                        <p>Fecha: 1 de septiembre</p>
-                        <p>Descripción de otro evento importante...</p>
-                    </li>
-                </ul>
+                <section class="events-home-section">
+                    <h2>Próximos Eventos de la Parroquia</h2>
+                    <div id="home-event-list" class="event-list-container">
+                    <p>Cargando eventos...</p>
+                    </div>
+                </section>
             </aside>
         </section>
     </main>
