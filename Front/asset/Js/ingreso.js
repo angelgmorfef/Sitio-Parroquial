@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const passwordInput = document.getElementById('password-input').value;
 
             try {
-                const response = await fetch('http://localhost:3000/api/login', {
+                const response = await fetch('/api/login', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (response.ok) {
                     localStorage.setItem('authToken', data.token);
-                    localStorage.setItem('username', data.username);
+                    localStorage.setItem('username', data.nombre); // Utilizamos nombre en lugar de username
                     alert('¡Inicio de sesión exitoso!');
                     window.location.href = 'perfil.html';
                 } else {

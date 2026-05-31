@@ -17,8 +17,21 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentYear = currentDate.getFullYear();
     let selectedDate = null;
 
-    // Obtener eventos del almacenamiento local del navegador
-    let events = JSON.parse(localStorage.getItem('parroquiaEvents')) || [];
+    // Obtener eventos del backend
+    let events = [];
+
+    async function fetchEvents() {
+        try {
+            const response = await fetch('/api/events');
+            if (response.ok) {
+                events = await response.json();
+                renderCalendar();
+                if (selectedDate) renderEventsForDate(selectedDate);
+            }
+        } catch (error) {
+            console.error('Error fetching events:', error);
+        }
+    }
 
     // ----------------------------------------------------
     //  FUNCIONES DEL CALENDARIO
@@ -105,19 +118,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 <p>Fecha: ${event.date}</p>
                 <p>Hora: ${event.time}</p>
                 <p>Descripción: ${event.description}</p>
-                <button class="delete-event-btn" data-id="${event.id}">Eliminar</button>
+                <button class="delete-event-btn" data-id="${event._id || event.id}">Eliminar</button>
             `;
             eventListContainer.appendChild(eventItem);
         });
     }
 
     // Función para eliminar un evento
-    function deleteEvent(eventId) {
-        events = events.filter(event => event.id != eventId);
-        localStorage.setItem('parroquiaEvents', JSON.stringify(events));
-
-        renderCalendar();
-        renderEventsForDate(selectedDate);
+    async function deleteEvent(eventId) {
+        try {
+            const response = await fetch(`/api/events/${eventId}`, {
+                method: 'DELETE'
+            });
+            if (response.ok) {
+                events = events.filter(event => event._id !== eventId && event.id != eventId);
+                renderCalendar();
+                renderEventsForDate(selectedDate);
+            } else {
+                alert('Error al eliminar el evento.');
+            }
+        } catch (error) {
+            console.error('Error deleting event:', error);
+            alert('Error de conexión.');
+        }
     }
 
     // ----------------------------------------------------
@@ -147,23 +170,38 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Maneja el envío del formulario para guardar un nuevo evento
-    eventForm.addEventListener('submit', (e) => {
+    eventForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
         const newEvent = {
-            id: Date.now(),
             date: eventDateInput.value,
             title: document.getElementById('event-title').value,
             time: document.getElementById('event-time').value,
             description: document.getElementById('event-description').value
         };
 
-        events.push(newEvent);
-        localStorage.setItem('parroquiaEvents', JSON.stringify(events));
+        try {
+            const response = await fetch('/api/events', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(newEvent)
+            });
 
-        renderCalendar();
-        renderEventsForDate(selectedDate);
-        hideModal();
+            if (response.ok) {
+                const savedEvent = await response.json();
+                events.push(savedEvent);
+                renderCalendar();
+                renderEventsForDate(selectedDate);
+                hideModal();
+            } else {
+                alert('Error al guardar el evento.');
+            }
+        } catch (error) {
+            console.error('Error saving event:', error);
+            alert('Error de conexión.');
+        }
     });
 
     // Manejar clics en los botones de eliminar
@@ -199,6 +237,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // ----------------------------------------------------
     //  INICIO DE LA APLICACIÓN
     // ----------------------------------------------------
-    renderCalendar();
+    fetchEvents();
 });
 

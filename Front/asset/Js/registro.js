@@ -16,13 +16,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 const apellido = document.getElementById('apellido-input').value.trim();
                 const correo = document.getElementById('email-input').value.trim();
                 const password = document.getElementById('password-input').value.trim();
+                const confirmPassword = document.getElementById('confirm-password-input').value.trim();
 
-                if (!nombre || !apellido || !correo || !password) {
+                if (!nombre || !apellido || !correo || !password || !confirmPassword) {
                     alert('Por favor, complete todos los campos.');
                     return;
                 }
 
-                const response = await fetch('http://localhost:3000/api/register', {
+                if (password !== confirmPassword) {
+                    alert('Las contraseñas no coinciden.');
+                    return;
+                }
+
+                const response = await fetch('/api/register', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

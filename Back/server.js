@@ -5,8 +5,9 @@ const cors = require('cors'); // Importa el middleware de CORS
 const path = require('path');
 const mongoose = require('mongoose');
 
-// Importa el nuevo archivo de rutas
+// Importa las rutas
 const parroquiaRoutes = require('./Routes/parroquiaRoutes');
+const eventRoutes = require('./Routes/eventRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -31,6 +32,7 @@ async function startServer() {
 
         // Usa el router para todas las rutas de la API
         app.use('/api', parroquiaRoutes);
+        app.use('/api/events', eventRoutes);
 
         // Inicia el servidor
         app.listen(PORT, () => {

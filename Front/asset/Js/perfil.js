@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     try {
-        const response = await fetch('http://localhost:3000/api/user/profile', {
+        const response = await fetch('/api/user/profile', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
