@@ -16,8 +16,24 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(cors()); // Usa el middleware de CORS aquí
 
-// Función asíncrona para iniciar el servidor
-async function startServer() {
+// Sirve los archivos estáticos (Front)
+app.use(express.static(path.join(__dirname, '../Front')));
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../Front', 'index.html'));
+});
+
+// Usa el router para todas las rutas de la API
+app.use('/api', parroquiaRoutes);
+app.use('/api/events', eventRoutes);
+
+// Inicia el servidor de inmediato
+app.listen(PORT, () => {
+    console.log(`🚀 Servidor escuchando en http://localhost:${PORT}`);
+});
+
+// Función asíncrona para iniciar la conexión a la base de datos
+async function connectDatabase() {
     try {
         let connected = false;
         const urisToTry = [
@@ -29,7 +45,7 @@ async function startServer() {
         for (const uri of urisToTry) {
             try {
                 const safeLogUri = uri.includes('@') ? uri.replace(/\/\/.*@/, '//***:***@') : uri;
-                console.log(`Intentando conectar a: ${safeLogUri}`);
+                console.log(`Intentando conectar a base de datos en: ${safeLogUri}`);
                 await mongoose.connect(uri, { serverSelectionTimeoutMS: 3000 });
                 console.log("✅ Conectado exitosamente a la base de datos.");
                 connected = true;
@@ -40,29 +56,13 @@ async function startServer() {
         }
 
         if (!connected) {
-            throw new Error("No se pudo establecer conexión con ninguna base de datos de MongoDB.");
+            console.error("❌ No se pudo establecer conexión con ninguna base de datos de MongoDB. Las funciones de registro, login y calendario no guardarán datos, pero la web está activa.");
         }
 
-        // Sirve los archivos estáticos (Front)
-        app.use(express.static(path.join(__dirname, '../Front')));
-        
-        app.get('/', (req, res) => {
-            res.sendFile(path.join(__dirname, '../Front', 'index.html'));
-        });
-
-        // Usa el router para todas las rutas de la API
-        app.use('/api', parroquiaRoutes);
-        app.use('/api/events', eventRoutes);
-
-        // Inicia el servidor
-        app.listen(PORT, () => {
-            console.log(`🚀 Servidor escuchando en http://localhost:${PORT}`);
-        });
-
     } catch (e) {
-        console.error("❌ Error al conectar a la base de datos:", e);
+        console.error("❌ Error inesperado al conectar a la base de datos:", e);
     }
 }
 
-// Llama a la función para iniciar el servidor
-startServer();
+// Inicia la conexión en segundo plano
+connectDatabase();
