@@ -19,9 +19,29 @@ app.use(cors()); // Usa el middleware de CORS aquí
 // Función asíncrona para iniciar el servidor
 async function startServer() {
     try {
-        // Conecta a la base de datos de MongoDB Atlas usando la variable de entorno
-        await mongoose.connect(process.env.MONGO_URI);
-        console.log("✅ Conectado exitosamente a la base de datos de MongoDB Atlas.");
+        let connected = false;
+        const urisToTry = [
+            process.env.MONGO_URI,
+            'mongodb://db:27017/sitio_parroquial', // Local dentro de Docker
+            'mongodb://127.0.0.1:27017/sitio_parroquial' // Local fuera de Docker
+        ].filter(Boolean);
+
+        for (const uri of urisToTry) {
+            try {
+                const safeLogUri = uri.includes('@') ? uri.replace(/\/\/.*@/, '//***:***@') : uri;
+                console.log(`Intentando conectar a: ${safeLogUri}`);
+                await mongoose.connect(uri, { serverSelectionTimeoutMS: 3000 });
+                console.log("✅ Conectado exitosamente a la base de datos.");
+                connected = true;
+                break;
+            } catch (err) {
+                console.warn(`⚠️ No se pudo conectar a la base de datos (${uri.split('@').pop()}): ${err.message}`);
+            }
+        }
+
+        if (!connected) {
+            throw new Error("No se pudo establecer conexión con ninguna base de datos de MongoDB.");
+        }
 
         // Sirve los archivos estáticos (Front)
         app.use(express.static(path.join(__dirname, '../Front')));
