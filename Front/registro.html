@@ -3,46 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro - Parroquia Jesús Obrero</title>
-    <meta name="description" content="Regístrate para crear una cuenta en el sitio de la Parroquia Jesús Obrero.">
-    <meta name="keywords" content="Parroquia, Iglesia, Jesús Obrero, Registro, Cuenta, Inscribir">
-    <meta name="author" content="Parroquia Jesús Obrero">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://tusitio.com/registro.html">
-    <meta property="og:title" content="Registro - Parroquia Jesús Obrero">
-    <meta property="og:description" content="Crea tu cuenta en la Parroquia Jesús Obrero.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://tusitio.com/registro.html">
-    <meta property="og:image" content="URL_de_una_imagen_representativa.jpg">
-    <link rel="stylesheet" href="asset/Css/regis&ingres.css">
+    <title>Registro | Parroquia Jesús Obrero</title>
+    <meta name="description" content="Crea tu cuenta en la Parroquia Jesús Obrero.">
     <link rel="icon" href="asset/Img/iglesia.png" type="image/x-icon">
+    <link rel="stylesheet" href="asset/Css/global.css">
+    <link rel="stylesheet" href="asset/Css/auth.css">
+    <script defer src="asset/Js/nav.js"></script>
     <script defer src="asset/Js/registro.js"></script>
-    <style>@import url('https://fonts.googleapis.com/css2?family=Gruppo&family=Libertinus+Keyboard&display=swap');</style>
 </head>
-<body>
-    <main class="main-content">
-        <div class="form-container">
-            <h2>Registro</h2>
-            <form id="registerForm">
-                <label for="nombre-input">Nombre:</label>
-                <input type="text" id="nombre-input" name="nombre" aria-label="Ingresa tu nombre" required>
+<body class="auth-page">
 
-                <label for="apellido-input">Apellido:</label>
-                <input type="text" id="apellido-input" name="apellido" aria-label="Ingresa tu apellido" required>
-
-                <label for="email-input">Correo:</label>
-                <input type="email" id="email-input" name="correo" aria-label="Ingresa tu correo electrónico" required autocomplete="username">
-                
-                <label for="password-input">Contraseña:</label>
-                <input type="password" id="password-input" name="password" aria-label="Crea una contraseña" required autocomplete="new-password">
-                
-                <label for="confirm-password-input">Verificar Contraseña:</label>
-                <input type="password" id="confirm-password-input" name="confirm-password" aria-label="Verifica tu contraseña" required autocomplete="new-password">
-
-                <button type="submit" id="register-button">Registrarse</button>
-            </form>
-            <p>¿Ya tienes una cuenta? <a href="ingreso.html">Ingresa aquí</a></p>
+    <nav class="navbar" id="main-navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="nav-logo">
+                <img src="asset/Img/iglesiafav.png" alt="Logo" class="nav-logo-img">
+                <span class="nav-logo-text">Parroquia Jesús Obrero</span>
+            </a>
+            <div class="nav-right">
+                <a href="index.html" class="btn btn-outline" style="font-size:0.88rem;padding:8px 16px;">← Volver al inicio</a>
+            </div>
         </div>
-    </main>
+    </nav>
+
+    <div class="auth-layout">
+        <div class="auth-visual" aria-hidden="true">
+            <div class="auth-visual-overlay"></div>
+            <div class="auth-visual-content">
+                <img src="asset/Img/iglesiafav.png" alt="Logo" class="auth-visual-logo">
+                <h2>Únete a nuestra comunidad</h2>
+                <p>Crea tu cuenta para acceder al calendario de eventos, chat parroquial y mucho más.</p>
+            </div>
+        </div>
+
+        <main class="auth-form-side">
+            <div class="auth-form-box">
+                <div class="auth-form-header">
+                    <h1>Crear cuenta</h1>
+                    <p>Completa el formulario para registrarte</p>
+                </div>
+
+                <form id="registerForm" class="auth-form" novalidate>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nombre-input">Nombre</label>
+                            <div class="input-wrapper">
+                                <span class="input-icon">👤</span>
+                                <input type="text" id="nombre-input" name="nombre"
+                                       placeholder="Tu nombre" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="apellido-input">Apellido</label>
+                            <div class="input-wrapper">
+                                <span class="input-icon">👤</span>
+                                <input type="text" id="apellido-input" name="apellido"
+                                       placeholder="Tu apellido" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email-input">Correo electrónico</label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">✉️</span>
+                            <input type="email" id="email-input" name="correo"
+                                   placeholder="correo@ejemplo.com"
+                                   autocomplete="username" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password-input">Contraseña</label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">🔒</span>
+                            <input type="password" id="password-input" name="password"
+                                   placeholder="Mínimo 8 caracteres"
+                                   autocomplete="new-password" required>
+                            <button type="button" class="toggle-password" aria-label="Ver contraseña">👁</button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirm-password-input">Confirmar contraseña</label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">🔒</span>
+                            <input type="password" id="confirm-password-input" name="confirm-password"
+                                   placeholder="Repite tu contraseña"
+                                   autocomplete="new-password" required>
+                        </div>
+                    </div>
+
+                    <div id="auth-error" class="auth-error" role="alert" style="display:none;"></div>
+
+                    <button type="submit" class="btn btn-primary btn-full auth-submit" id="register-button">
+                        Crear cuenta
+                    </button>
+                </form>
+
+                <div class="auth-footer-links">
+                    <p>¿Ya tienes una cuenta? <a href="ingreso.html">Ingresa aquí</a></p>
+                </div>
+            </div>
+        </main>
+    </div>
+
 </body>
 </html>

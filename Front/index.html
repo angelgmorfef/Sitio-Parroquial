@@ -4,156 +4,279 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parroquia Jesús Obrero | Comunidad de Fe y Esperanza</title>
-    <meta name="description" content="Sitio web oficial de la Parroquia Jesús Obrero: información, servicios religiosos, noticias actualizadas y calendario de eventos. Únete a nuestra comunidad católica en Venezuela.">
+    <meta name="description" content="Sitio web oficial de la Parroquia Jesús Obrero: información, servicios religiosos, noticias actualizadas y calendario de eventos.">
     <meta name="keywords" content="Parroquia, Iglesia, Jesús Obrero, Horarios de Misa, Sacramentos, Noticias, Eventos, Comunidad Católica, Venezuela">
     <meta name="author" content="Parroquia Jesús Obrero">
-    <link rel="stylesheet" href="asset/Css/index.css">
     <link rel="icon" href="asset/Img/iglesia.png" type="image/x-icon">
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Gruppo&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
+    <link rel="stylesheet" href="asset/Css/global.css">
+    <link rel="stylesheet" href="asset/Css/index.css">
     <!-- Scripts -->
+    <script defer src="asset/Js/nav.js"></script>
     <script defer src="asset/Js/buscador.js"></script>
     <script defer src="asset/Js/scroll.js"></script>
     <script defer src="asset/Js/chat.js"></script>
     <script defer src="asset/Js/index-events.js"></script>
 </head>
 <body>
-    
-    <!-- Navbar (Sticky & Modern) -->
-    <nav class="navbar">
+    <!-- ===== NAVBAR (Compartida) ===== -->
+    <nav class="navbar" id="main-navbar">
         <div class="navbar-container">
-            <a href="index.html" class="logo">
-                <img src="asset/Img/iglesiafav.png" alt="Logotipo Parroquia Jesús Obrero" class="logo-image">
-                <span class="logo-text">Parroquia Jesús Obrero</span>
+            <a href="index.html" class="nav-logo">
+                <img src="asset/Img/iglesiafav.png" alt="Logo Parroquia Jesús Obrero" class="nav-logo-img">
+                <span class="nav-logo-text">Parroquia Jesús Obrero</span>
             </a>
-            
+
             <ul class="nav-links">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="#">Servicios</a></li>
+                <li><a href="index.html" class="active">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
                 <li><a href="calendario.html">Calendario</a></li>
-                <li><a href="#">Contacto</a></li>
+                <li><a href="#contacto">Contacto</a></li>
             </ul>
 
-            <div class="nav-actions">
-                <form class="search-form" action="/search" method="get">
-                    <input type="search" placeholder="Buscar..." name="q" class="search-input">
-                    <button type="submit" class="search-button">
-                        <img src="asset/Img/lupa.png" alt="Buscar" class="search-icon">
+            <div class="nav-right">
+                <form class="nav-search" action="/search" method="get" role="search">
+                    <input type="search" placeholder="Buscar..." name="q" aria-label="Buscar en el sitio">
+                    <button type="submit" aria-label="Buscar">
+                        <img src="asset/Img/lupa.png" alt="Buscar" class="nav-search-icon">
                     </button>
                 </form>
-                <div class="auth-buttons">
+                <div class="nav-auth" id="nav-auth-btns">
                     <a href="registro.html" class="btn btn-outline">Registro</a>
                     <a href="ingreso.html" class="btn btn-primary">Ingreso</a>
                 </div>
             </div>
+
+            <!-- Hamburger -->
+            <button class="nav-hamburger" id="nav-hamburger" aria-label="Abrir menú">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </nav>
 
-    <!-- Hero Section (Replaces Carousel) -->
+    <!-- Mobile Menu -->
+    <div class="nav-mobile-overlay" id="nav-overlay"></div>
+    <div class="nav-mobile-menu" id="nav-mobile-menu">
+        <a href="index.html">Inicio</a>
+        <a href="#servicios">Servicios</a>
+        <a href="calendario.html">Calendario</a>
+        <a href="#contacto">Contacto</a>
+        <div class="nav-mobile-divider"></div>
+        <div class="nav-mobile-auth" id="nav-mobile-auth">
+            <a href="registro.html" class="btn btn-outline">Registro</a>
+            <a href="ingreso.html" class="btn btn-primary">Ingreso</a>
+        </div>
+    </div>
+
+    <!-- ===== HERO ===== -->
     <header class="hero-section">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1>Bienvenidos a nuestra Comunidad</h1>
-            <p>Un espacio de fe, esperanza y caridad. Descubre nuestros servicios, noticias y eventos parroquiales.</p>
+            <span class="hero-label">Bienvenidos</span>
+            <h1>Comunidad de<br>Fe y Esperanza</h1>
+            <p>Un espacio sagrado de oración, comunión y servicio.<br>Descubre nuestras celebraciones, noticias y eventos parroquiales.</p>
             <div class="hero-buttons">
-                <a href="#noticias" class="btn btn-primary btn-large">Últimas Noticias</a>
-                <a href="calendario.html" class="btn btn-outline btn-large">Ver Calendario</a>
+                <a href="#noticias" class="btn btn-primary btn-lg">Últimas Noticias</a>
+                <a href="calendario.html" class="btn btn-outline-light btn-lg">Ver Calendario</a>
             </div>
+        </div>
+        <!-- Scroll hint -->
+        <div class="hero-scroll-hint" aria-hidden="true">
+            <span>Desplázate</span>
+            <div class="hero-scroll-arrow"></div>
         </div>
     </header>
 
+    <!-- ===== BANNERS DE SERVICIO ===== -->
+    <section class="services-strip" id="servicios">
+        <div class="services-strip-inner">
+            <div class="service-card-strip">
+                <div class="service-icon">✝</div>
+                <div>
+                    <h3>Misas</h3>
+                    <p>Lun–Vie 7:00am · Dom 9:00am y 6:00pm</p>
+                </div>
+            </div>
+            <div class="service-card-strip">
+                <div class="service-icon">💍</div>
+                <div>
+                    <h3>Sacramentos</h3>
+                    <p>Bautismo, Matrimonio, Confirmación</p>
+                </div>
+            </div>
+            <div class="service-card-strip">
+                <div class="service-icon">📖</div>
+                <div>
+                    <h3>Catequesis</h3>
+                    <p>Sábados 9:00am — Niños y Adultos</p>
+                </div>
+            </div>
+            <div class="service-card-strip">
+                <div class="service-icon">🤝</div>
+                <div>
+                    <h3>Pastoral Social</h3>
+                    <p>Apoyo a familias en situación de necesidad</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTENIDO PRINCIPAL ===== -->
     <main class="main-content">
-        <!-- Contenedor Principal (Grid: Noticias y Calendario) -->
         <div class="content-grid">
-            
-            <!-- Sección de Noticias (Cards) -->
+
+            <!-- Noticias -->
             <section id="noticias" class="news-section">
                 <div class="section-header">
+                    <span class="section-tag">Comunidad</span>
                     <h2>Últimas Noticias</h2>
                     <div class="divider"></div>
                 </div>
-                
+
                 <div class="news-cards">
-                    <!-- Tarjeta 1 -->
                     <article class="news-card">
-                        <div class="card-image">
-                            <img src="https://img.freepik.com/free-photo/aerial-beautiful-shot-seashore-with-hills-background-sunset_181624-24143.jpg?semt=ais_hybrid&w=740&q=80" alt="Noticia 1">
-                            <div class="card-date">24 May, 2025</div>
+                        <div class="card-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?w=600&q=80" alt="Encuentro de Jóvenes" loading="lazy">
+                            <span class="card-tag">Juventud</span>
                         </div>
-                        <div class="card-content">
+                        <div class="card-body">
+                            <time class="card-date" datetime="2025-05-24">24 Mayo, 2025</time>
                             <h3>Encuentro de Jóvenes</h3>
                             <p>Una maravillosa jornada de reflexión y oración con los jóvenes de nuestra parroquia. Conoce más sobre este evento inspirador.</p>
-                            <a href="#" class="read-more">Leer más &rarr;</a>
+                            <a href="#" class="read-more">Leer más <span aria-hidden="true">→</span></a>
                         </div>
                     </article>
 
-                    <!-- Tarjeta 2 -->
                     <article class="news-card">
-                        <div class="card-image">
-                            <img src="https://t4.ftcdn.net/jpg/04/39/89/01/360_F_439890152_sYbPxa1ANTSKcZuUsKzRAf9O7bJ1Tx5B.jpg" alt="Noticia 2">
-                            <div class="card-date">18 May, 2025</div>
+                        <div class="card-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600&q=80" alt="Restauración del Templo" loading="lazy">
+                            <span class="card-tag">Comunidad</span>
                         </div>
-                        <div class="card-content">
+                        <div class="card-body">
+                            <time class="card-date" datetime="2025-05-18">18 Mayo, 2025</time>
                             <h3>Restauración del Templo</h3>
                             <p>Gracias a las donaciones de la comunidad, hemos logrado avanzar en la restauración de los vitrales y el altar principal.</p>
-                            <a href="#" class="read-more">Leer más &rarr;</a>
+                            <a href="#" class="read-more">Leer más <span aria-hidden="true">→</span></a>
+                        </div>
+                    </article>
+
+                    <article class="news-card">
+                        <div class="card-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=600&q=80" alt="Campaña de Navidad" loading="lazy">
+                            <span class="card-tag">Pastoral</span>
+                        </div>
+                        <div class="card-body">
+                            <time class="card-date" datetime="2025-05-10">10 Mayo, 2025</time>
+                            <h3>Campaña de Solidaridad</h3>
+                            <p>Únete a nuestra colecta anual de alimentos y víveres para apoyar a las familias más vulnerables de nuestra comunidad.</p>
+                            <a href="#" class="read-more">Leer más <span aria-hidden="true">→</span></a>
                         </div>
                     </article>
                 </div>
             </section>
 
-            <!-- Sección del Calendario (Sidebar) -->
-            <aside class="calendar-sidebar">
-                <div class="sidebar-box">
-                    <h2>Próximos Eventos</h2>
-                    <div class="divider"></div>
-                    <div id="home-event-list" class="event-list-container">
+            <!-- Sidebar: Próximos Eventos -->
+            <aside class="events-sidebar">
+                <div class="sidebar-card">
+                    <div class="section-header">
+                        <span class="section-tag">Agenda</span>
+                        <h2>Próximos Eventos</h2>
+                        <div class="divider"></div>
+                    </div>
+                    <div id="home-event-list" class="event-list-home">
                         <p class="loading-text">Cargando eventos...</p>
                     </div>
-                    <a href="calendario.html" class="btn btn-outline btn-full">Ver Calendario Completo</a>
+                    <a href="calendario.html" class="btn btn-primary btn-full" style="margin-top: 16px;">
+                        Ver Calendario Completo
+                    </a>
                 </div>
             </aside>
-            
-        </div>
+
+        </div><!-- /content-grid -->
     </main>
 
-    <!-- Componentes Flotantes (Chat y Botón Arriba) -->
-    <button id="back-to-top-btn" title="Volver arriba">&#8593;</button>
-    <button class="chat-toggle-btn">
+    <!-- ===== SECCIÓN CONTACTO ===== -->
+    <section id="contacto" class="contact-section">
+        <div class="contact-inner">
+            <div class="contact-text">
+                <span class="section-tag section-tag-light">Contáctanos</span>
+                <h2>Estamos aquí para ti</h2>
+                <p>No dudes en acercarte a nuestra parroquia o escribirnos. Estaremos encantados de atenderte.</p>
+                <ul class="contact-list">
+                    <li><span class="contact-icon">📍</span> Av. Principal, Parroquia Jesús Obrero, Venezuela</li>
+                    <li><span class="contact-icon">📞</span> +58 212 000 0000</li>
+                    <li><span class="contact-icon">✉️</span> info@parroquiajesusobrero.org</li>
+                </ul>
+            </div>
+            <div class="contact-cta">
+                <h3>¿Necesitas ayuda espiritual?</h3>
+                <p>Nuestros sacerdotes están disponibles para orientarte y acompañarte en tu camino de fe.</p>
+                <button class="btn btn-primary btn-lg chat-toggle-btn" style="position:static; box-shadow:none; margin-top:16px;">
+                    <svg class="chat-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2Z"/>
+                    </svg>
+                    Hablar con nosotros
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CHAT FLOTANTE ===== -->
+    <button class="chat-toggle-btn" id="chat-toggle" aria-label="Abrir chat">
         <svg class="chat-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2ZM20 16H5.17L4 17.17V4H20V16Z"></path>
+            <path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2ZM20 16H5.17L4 17.17V4H20V16Z"/>
         </svg>
         Envíanos un mensaje
     </button>
 
-    <div class="chat-window">
+    <div class="chat-window" id="chat-window">
         <div class="chat-header">
             <h3>Chat en Vivo</h3>
-            <button class="chat-close-btn">&times;</button>
+            <button class="chat-close-btn" id="chat-close" aria-label="Cerrar chat">&times;</button>
         </div>
-        <div class="chat-body">
-            <p>¡Hola! ¿En qué podemos ayudarle?</p>
+        <div class="chat-body" id="chat-body">
+            <p>¡Hola! ¿En qué podemos ayudarte?</p>
         </div>
-        <div class="chat-footer">
-            <input type="text" placeholder="Escribe un mensaje..." />
-            <button>Enviar</button>
+        <div class="chat-footer" id="chat-footer">
+            <input type="text" placeholder="Escribe un mensaje..." aria-label="Mensaje">
+            <button type="button">Enviar</button>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-info">
-                <h3>Parroquia Jesús Obrero</h3>
+    <!-- Back to top -->
+    <button id="back-to-top-btn" aria-label="Volver arriba">↑</button>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="nav-logo">
+                    <img src="asset/Img/iglesiafav.png" alt="Logo" class="nav-logo-img">
+                    <span class="nav-logo-text">Parroquia Jesús Obrero</span>
+                </a>
                 <p>Una comunidad viva, evangelizadora y solidaria al servicio del pueblo de Dios.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Navegación</h4>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="calendario.html">Calendario</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Mi Cuenta</h4>
+                <ul>
+                    <li><a href="ingreso.html">Ingreso</a></li>
+                    <li><a href="registro.html">Registro</a></li>
+                    <li><a href="perfil.html">Mi Perfil</a></li>
+                </ul>
             </div>
         </div>
         <div class="footer-bottom">
             <p>&copy; 2025 Parroquia Jesús Obrero. Todos los derechos reservados.</p>
         </div>
     </footer>
+
 </body>
 </html>

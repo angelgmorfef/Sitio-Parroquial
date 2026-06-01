@@ -3,46 +3,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil de Usuario | Mi Aplicación - [Nombre del Usuario]</title>
-    <meta name="description" content="Gestiona tu perfil en Mi Aplicación. Actualiza tu información personal, revisa tus actividades y personaliza tu experiencia de usuario.">
-    <meta name="keywords" content="perfil de usuario, mi aplicacion, gestion de perfil, cuenta de usuario, nombre de usuario, configuración de perfil">
-    <meta name="author" content="Mi Aplicación S.A.">
-    <link rel="canonical" href="https://www.tuaplicacion.com/perfil/nombre_de_usuario">
+    <title>Mi Perfil | Parroquia Jesús Obrero</title>
+    <meta name="description" content="Gestiona tu perfil en la Parroquia Jesús Obrero.">
+    <link rel="icon" href="asset/Img/iglesia.png" type="image/x-icon">
+    <link rel="stylesheet" href="asset/Css/global.css">
     <link rel="stylesheet" href="asset/Css/perfil.css">
-    <script src="asset/Js/perfil.js" defer></script>
+    <script defer src="asset/Js/nav.js"></script>
+    <script defer src="asset/Js/scroll.js"></script>
+    <script defer src="asset/Js/perfil.js"></script>
 </head>
 <body>
-    <main class="profile-container">
-        <section class="profile-header">
-            <img src="https://via.placeholder.com/150" alt="Foto de perfil de [Nombre del Usuario]" class="profile-picture">
-            <h1 id="user-name">Nombre de Usuario</h1>
-            <p id="welcome-message">¡Bienvenido de nuevo a tu perfil!</p>
-        </section>
-        <section class="profile-details">
-            <h2>Información Personal de <span id="user-display-name">[Nombre del Usuario]</span></h2>
-            <div class="info-group">
-                <span class="info-label">Correo Electrónico:</span>
-                <span id="user-email" class="info-value">correo@ejemplo.com</span>
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar" id="main-navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="nav-logo">
+                <img src="asset/Img/iglesiafav.png" alt="Logo" class="nav-logo-img">
+                <span class="nav-logo-text">Parroquia Jesús Obrero</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="index.html#servicios">Servicios</a></li>
+                <li><a href="calendario.html">Calendario</a></li>
+                <li><a href="index.html#contacto">Contacto</a></li>
+            </ul>
+            <div class="nav-right">
+                <div class="nav-auth" id="nav-auth-btns">
+                    <a href="registro.html" class="btn btn-outline">Registro</a>
+                    <a href="ingreso.html" class="btn btn-primary">Ingreso</a>
+                </div>
             </div>
-            <div class="info-group">
-                <span class="info-label">Ubicación:</span>
-                <span id="user-location" class="info-value">Ciudad, País</span>
-            </div>
-            <div class="info-group">
-                <span class="info-label">Fecha de Registro:</span>
-                <span id="user-join-date" class="info-value">01 de Enero, 2023</span>
-            </div>
-        </section>
+            <button class="nav-hamburger" id="nav-hamburger" aria-label="Menú">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+    <div class="nav-mobile-overlay" id="nav-overlay"></div>
+    <div class="nav-mobile-menu" id="nav-mobile-menu">
+        <a href="index.html">Inicio</a>
+        <a href="calendario.html">Calendario</a>
+        <div class="nav-mobile-divider"></div>
+        <div class="nav-mobile-auth" id="nav-mobile-auth"></div>
+    </div>
 
-        <section class="profile-bio">
-            <h2>Acerca de <span id="user-bio-name">[Nombre del Usuario]</span></h2>
-            <p id="user-bio">Breve biografía del usuario. Este espacio describe los intereses o actividades del usuario en la plataforma.</p>
-        </section>
+    <!-- Page Hero -->
+    <div class="page-hero profile-page-hero">
+        <div class="profile-avatar-wrap">
+            <img src="https://ui-avatars.com/api/?name=Usuario&background=aa0000&color=fff&size=128&bold=true" alt="Foto de perfil" id="profile-avatar" class="profile-avatar">
+            <span class="profile-badge">✓</span>
+        </div>
+        <h1 id="user-name">Cargando...</h1>
+        <p id="welcome-message">Bienvenido a tu perfil parroquial</p>
+    </div>
 
-        <section class="profile-actions">
-            <button class="edit-button" aria-label="Editar Perfil">Editar Perfil</button>
-            <button class="change-password-button" aria-label="Cambiar Contraseña">Cambiar Contraseña</button>
-        </section>
+    <!-- Main content -->
+    <main class="profile-main">
+        <div class="profile-grid">
+
+            <!-- Info Personal -->
+            <section class="profile-card">
+                <div class="profile-card-header">
+                    <h2>📋 Información Personal</h2>
+                </div>
+                <div class="profile-card-body">
+                    <div class="info-row">
+                        <span class="info-label">Nombre completo</span>
+                        <span id="user-display-name" class="info-value">—</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Correo electrónico</span>
+                        <span id="user-email" class="info-value">—</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Fecha de registro</span>
+                        <span id="user-join-date" class="info-value">—</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Rol</span>
+                        <span class="info-value">
+                            <span class="role-badge">Feligrés</span>
+                        </span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Acciones -->
+            <section class="profile-card">
+                <div class="profile-card-header">
+                    <h2>⚙️ Acciones</h2>
+                </div>
+                <div class="profile-card-body profile-actions-body">
+                    <button class="btn btn-primary" id="edit-profile-btn">
+                        ✏️ Editar Perfil
+                    </button>
+                    <a href="calendario.html" class="btn btn-outline">
+                        📅 Ver Calendario
+                    </a>
+                    <button class="btn btn-outline" id="change-password-btn">
+                        🔒 Cambiar Contraseña
+                    </button>
+                    <button class="btn" id="logout-profile-btn" style="background:rgba(170,0,0,0.08);color:var(--primary);border:1.5px solid rgba(170,0,0,0.2);">
+                        🚪 Cerrar Sesión
+                    </button>
+                </div>
+            </section>
+
+            <!-- Actividad reciente -->
+            <section class="profile-card profile-card-full">
+                <div class="profile-card-header">
+                    <h2>🕐 Actividad Reciente</h2>
+                </div>
+                <div class="profile-card-body">
+                    <div class="activity-list" id="activity-list">
+                        <div class="activity-item">
+                            <span class="activity-dot"></span>
+                            <div>
+                                <p class="activity-title">Inicio de sesión</p>
+                                <p class="activity-time">Hoy</p>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-dot"></span>
+                            <div>
+                                <p class="activity-title">Perfil creado</p>
+                                <p class="activity-time" id="user-join-date-2">—</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
     </main>
+
+    <button id="back-to-top-btn" aria-label="Volver arriba">↑</button>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="nav-logo">
+                    <img src="asset/Img/iglesiafav.png" alt="Logo" class="nav-logo-img">
+                    <span class="nav-logo-text">Parroquia Jesús Obrero</span>
+                </a>
+                <p>Una comunidad viva, evangelizadora y solidaria.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Navegación</h4>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="calendario.html">Calendario</a></li>
+                    <li><a href="index.html#contacto">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Mi Cuenta</h4>
+                <ul>
+                    <li><a href="perfil.html">Mi Perfil</a></li>
+                    <li><a href="ingreso.html">Ingreso</a></li>
+                    <li><a href="registro.html">Registro</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Parroquia Jesús Obrero. Todos los derechos reservados.</p>
+        </div>
+    </footer>
 </body>
 </html>
