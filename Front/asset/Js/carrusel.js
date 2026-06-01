@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextBtn = document.querySelector('.next');
 
     if (!slides || slide.length === 0 || !prevBtn || !nextBtn) {
-        console.error("El carrusel no se pudo iniciar. Faltan elementos.");
         return;
     }
 

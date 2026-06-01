@@ -7,54 +7,128 @@
     <meta name="description" content="Sitio web oficial de la Parroquia Jesús Obrero: información, servicios religiosos, noticias actualizadas y calendario de eventos. Únete a nuestra comunidad católica en Venezuela.">
     <meta name="keywords" content="Parroquia, Iglesia, Jesús Obrero, Horarios de Misa, Sacramentos, Noticias, Eventos, Comunidad Católica, Venezuela">
     <meta name="author" content="Parroquia Jesús Obrero">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://tusitio.com/">
-    <meta property="og:title" content="Parroquia Jesús Obrero">
-    <meta property="og:description" content="Información, servicios, noticias y calendario de la Parroquia Jesús Obrero.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://tusitio.com/">
-    <meta property="og:image" content="URL_de_una_imagen_representativa.jpg">
     <link rel="stylesheet" href="asset/Css/index.css">
     <link rel="icon" href="asset/Img/iglesia.png" type="image/x-icon">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gruppo&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Scripts -->
     <script defer src="asset/Js/buscador.js"></script>
     <script defer src="asset/Js/scroll.js"></script>
-    <script defer src="asset/Js/carrusel.js"></script>
     <script defer src="asset/Js/chat.js"></script>
-    <script defer src="asset/Js/index-events.js"></script> 
-    <style>@import url('https://fonts.googleapis.com/css2?family=Gruppo&family=Libertinus+Keyboard&display=swap');</style>
+    <script defer src="asset/Js/index-events.js"></script>
 </head>
 <body>
-    <header class="header-container">
-        <h1 class="logo">
-            <img src="asset/Img/iglesiafav.png" alt="Logotipo de la Parroquia Jesús Obrero, una cruz cristiana" class="logo-image">
-            PARROQUIA JESUS OBRERO
-        </h1>
-        <form class="search-form" action="/search" method="get">
-            <input type="search" placeholder="Buscar..." name="q" class="search-input">
-            <button type="submit" class="search-button">
-                <img src="asset/Img/lupa.png" alt="Icono de lupa para buscar" class="search-icon" style="width: 20px; height: 20px;">
-            </button>
-        </form>
-        <div class="header-buttons-container">
-            <a href="registro.html" class="header-button">Registro</a>
-            <a href="ingreso.html" class="header-button">Ingreso</a>
-        </div>
-    </header>
-    <div class="nav-container">
-        <nav class="nav">
-            <ul>
+    
+    <!-- Navbar (Sticky & Modern) -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="logo">
+                <img src="asset/Img/iglesiafav.png" alt="Logotipo Parroquia Jesús Obrero" class="logo-image">
+                <span class="logo-text">Parroquia Jesús Obrero</span>
+            </a>
+            
+            <ul class="nav-links">
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="#">Servicios</a></li>
                 <li><a href="calendario.html">Calendario</a></li>
                 <li><a href="#">Contacto</a></li>
-                <li><a href="registro.html">Registro</a></li>
-                <li><a href="ingreso.html">Ingreso</a></li>
-                <li><a href="perfil.html">Perfil</a></li>
             </ul>
-        </nav>
-    </div>
+
+            <div class="nav-actions">
+                <form class="search-form" action="/search" method="get">
+                    <input type="search" placeholder="Buscar..." name="q" class="search-input">
+                    <button type="submit" class="search-button">
+                        <img src="asset/Img/lupa.png" alt="Buscar" class="search-icon">
+                    </button>
+                </form>
+                <div class="auth-buttons">
+                    <a href="registro.html" class="btn btn-outline">Registro</a>
+                    <a href="ingreso.html" class="btn btn-primary">Ingreso</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section (Replaces Carousel) -->
+    <header class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Bienvenidos a nuestra Comunidad</h1>
+            <p>Un espacio de fe, esperanza y caridad. Descubre nuestros servicios, noticias y eventos parroquiales.</p>
+            <div class="hero-buttons">
+                <a href="#noticias" class="btn btn-primary btn-large">Últimas Noticias</a>
+                <a href="calendario.html" class="btn btn-outline btn-large">Ver Calendario</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <!-- Contenedor Principal (Grid: Noticias y Calendario) -->
+        <div class="content-grid">
+            
+            <!-- Sección de Noticias (Cards) -->
+            <section id="noticias" class="news-section">
+                <div class="section-header">
+                    <h2>Últimas Noticias</h2>
+                    <div class="divider"></div>
+                </div>
+                
+                <div class="news-cards">
+                    <!-- Tarjeta 1 -->
+                    <article class="news-card">
+                        <div class="card-image">
+                            <img src="https://img.freepik.com/free-photo/aerial-beautiful-shot-seashore-with-hills-background-sunset_181624-24143.jpg?semt=ais_hybrid&w=740&q=80" alt="Noticia 1">
+                            <div class="card-date">24 May, 2025</div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Encuentro de Jóvenes</h3>
+                            <p>Una maravillosa jornada de reflexión y oración con los jóvenes de nuestra parroquia. Conoce más sobre este evento inspirador.</p>
+                            <a href="#" class="read-more">Leer más &rarr;</a>
+                        </div>
+                    </article>
+
+                    <!-- Tarjeta 2 -->
+                    <article class="news-card">
+                        <div class="card-image">
+                            <img src="https://t4.ftcdn.net/jpg/04/39/89/01/360_F_439890152_sYbPxa1ANTSKcZuUsKzRAf9O7bJ1Tx5B.jpg" alt="Noticia 2">
+                            <div class="card-date">18 May, 2025</div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Restauración del Templo</h3>
+                            <p>Gracias a las donaciones de la comunidad, hemos logrado avanzar en la restauración de los vitrales y el altar principal.</p>
+                            <a href="#" class="read-more">Leer más &rarr;</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Sección del Calendario (Sidebar) -->
+            <aside class="calendar-sidebar">
+                <div class="sidebar-box">
+                    <h2>Próximos Eventos</h2>
+                    <div class="divider"></div>
+                    <div id="home-event-list" class="event-list-container">
+                        <p class="loading-text">Cargando eventos...</p>
+                    </div>
+                    <a href="calendario.html" class="btn btn-outline btn-full">Ver Calendario Completo</a>
+                </div>
+            </aside>
+            
+        </div>
+    </main>
+
+    <!-- Componentes Flotantes (Chat y Botón Arriba) -->
     <button id="back-to-top-btn" title="Volver arriba">&#8593;</button>
-    <button class="chat-toggle-btn">Envíanos un mensaje</button>
+    <button class="chat-toggle-btn">
+        <svg class="chat-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2ZM20 16H5.17L4 17.17V4H20V16Z"></path>
+        </svg>
+        Envíanos un mensaje
+    </button>
+
     <div class="chat-window">
         <div class="chat-header">
             <h3>Chat en Vivo</h3>
@@ -68,51 +142,18 @@
             <button>Enviar</button>
         </div>
     </div>
-    <main>
-        <section class="carrusel" id="carrusel">
-            <div class="slides">
-                <div class="slide active">
-                    <img src="https://img.freepik.com/free-photo/aerial-beautiful-shot-seashore-with-hills-background-sunset_181624-24143.jpg?semt=ais_hybrid&w=740&q=80" alt="Grupo de personas reunidas en una iglesia para un evento de la comunidad.">
-                    <p>Descripción de la imagen 1.</p>
-                </div>
-                <div class="slide">
-                    <img src="https://img.freepik.com/free-photo/vestrahorn-mountains-stokksnes-iceland_335224-667.jpg?semt=ais_hybrid&w=740&q=80" alt="Un sacerdote dando la homilía en el altar de la iglesia.">
-                    <p>Descripción de la imagen 2.</p>
-                </div>
-                <div class="slide">
-                    <img src="https://t4.ftcdn.net/jpg/04/39/89/01/360_F_439890152_sYbPxa1ANTSKcZuUsKzRAf9O7bJ1Tx5B.jpg" alt="Vista del interior de una parroquia con vitrales de colores.">
-                    <p>Descripción de la imagen 3.</p>
-                </div>
-            </div>
-            <button class="prev">&#10094;</button>
-            <button class="next">&#10095;</button>
-        </section>
-        <section class="noticias-calendario">
-            <div class="columna-noticias">
-                <h2>Últimas Noticias</h2>
-                <article>
-                    <h3>Título de la Noticia 1</h3>
-                    <p>Breve resumen de la primera noticia. Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-                    <a href="#">Leer más</a>
-                </article>
-                <article>
-                    <h3>Título de la Noticia 2</h3>
-                    <p>Breve resumen de la segunda noticia. Ut enim ad minim veniam, quis nostrud exercitation...</p>
-                    <a href="#">Leer más</a>
-                </article>
-            </div>
-            <aside class="columna-calendario">
-                <section class="events-home-section">
-                    <h2>Próximos Eventos de la Parroquia</h2>
-                    <div id="home-event-list" class="event-list-container">
-                    <p>Cargando eventos...</p>
-                    </div>
-                </section>
-            </aside>
-        </section>
-    </main>
+
+    <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2025 Parroquia Jesús Obrero. Todos los derechos reservados.</p>
+        <div class="footer-content">
+            <div class="footer-info">
+                <h3>Parroquia Jesús Obrero</h3>
+                <p>Una comunidad viva, evangelizadora y solidaria al servicio del pueblo de Dios.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Parroquia Jesús Obrero. Todos los derechos reservados.</p>
+        </div>
     </footer>
 </body>
 </html>
